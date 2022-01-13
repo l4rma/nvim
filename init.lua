@@ -9,4 +9,3 @@ require('config')
 require('keybindings')
 require('packages')
 require('nvim-cmp')
-
