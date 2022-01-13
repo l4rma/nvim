@@ -6,7 +6,6 @@ local opts = { noremap = true }
 local function nkeymap(key, map)
 	keymap('n', key, map, opts)
 end
-
 -- Save, Quit, Source, Alpha
 keymap('n', '<leader>w', ':w<CR>', {})
 keymap('n', '<leader>q', ':q<CR>', {})
@@ -37,6 +36,15 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
+-- Nerdtree
+keymap("n", "<leader>n", ":NERDTreeToggle<cr>", opts)
+
+-- Git (vim-fugitive)
+nkeymap('<leader>gs', ':G<cr>')
+nkeymap('<leader>gh', ':diffget //2<cr>')
+nkeymap('<leader>gl', ':diffget //3<cr>')
+
+
 -- Telescope
 nkeymap('<leader>ff', ':lua require("telescope.builtin").find_files({hidden=true})<cr>')
 nkeymap('<leader>fg', '<cmd>Telescope live_grep<cr>')
@@ -54,4 +62,8 @@ nkeymap('gt', ':lua vim.lsp.buf.type_definition()<cr>')
 nkeymap('K', ':lua vim.lsp.buf.hover()<cr>')
 nkeymap('<c-k>', ':lua vim.lsp.buf.signature_help()<cr>')
 nkeymap('<leader>af', ':lua vim.lsp.buf.code_action()<cr>')
+nkeymap('<a-cr>', ':lua vim.lsp.buf.code_action()<cr>')
 nkeymap('<leader>rn', ':lua vim.lsp.buf.rename()<cr>')
+
+
+

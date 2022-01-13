@@ -1,8 +1,21 @@
 require('packer').startup(function()
-	use 'wbthomason/packer.nvim'
-	use 'vimwiki/vimwiki'
-	use 'morhetz/gruvbox'
-	use { 
+	use 'wbthomason/packer.nvim'	-- Packception
+	use 'vimwiki/vimwiki'			-- VimWiki
+	use 'morhetz/gruvbox'			-- Colorscheme
+	use 'tpope/vim-fugitive'		-- Git plugin
+	use 'vim-airline/vim-airline'	-- Lean & mean status/tabline
+	use 'preservim/nerdtree'		-- Nerdtree
+
+	-- Autopair
+	use {
+		'windwp/nvim-autopairs',
+		config = function()
+			require('nvim-autopairs').setup()
+		end
+	}
+
+	-- Alpha-nvim Dashboard
+	use {
 		'goolord/alpha-nvim',
 		requires = { 'kyazdani42/nvim-web-devicons' },
 		config = function ()
@@ -17,12 +30,35 @@ require('packer').startup(function()
 		end
 	}
 
+	-- Treesitter
 	use 'nvim-treesitter/nvim-treesitter'
+
+	-- LSP
 	use 'neovim/nvim-lspconfig'
 	use 'williamboman/nvim-lsp-installer'
-	use 'hrsh7th/nvim-compe'
+
+	-- Autocomplete
+	use {
+		'hrsh7th/nvim-cmp',
+		requires = {
+			'L3MON4D3/LuaSnip',
+			'hrsh7th/cmp-nvim-lsp',
+			'hrsh7th/cmp-path',
+			'hrsh7th/cmp-buffer',
+			'saadparwaiz1/cmp_luasnip',
+		},
+	}
+
+	-- Telescope
 	use {
 		'nvim-telescope/telescope.nvim',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
+
+	-- Markdown Previewer
+	use {
+		'iamcco/markdown-preview.nvim',
+		run = 'cd app && yarn install', cmd = 'MarkdownPreview'
+	}
+
 end)

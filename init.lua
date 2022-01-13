@@ -8,5 +8,5 @@
 require('config')
 require('keybindings')
 require('packages')
-require('compe-conf')
+require('nvim-cmp')
 
