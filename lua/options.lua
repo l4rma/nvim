@@ -22,6 +22,7 @@ set.hidden = true
 set.errorbells = false
 set.swapfile = false
 set.backup = false
+set.termguicolors = true
 set.wildmenu = true
 
 -- Folding code
@@ -30,6 +31,6 @@ set.foldexpr = "nvim_treesitter#foldexpr()"
 set.foldenable = false
 
 -- Set Colorscheme Gruvbox
---set.background = "dark"
-vim.cmd("colorscheme gruvbox")
-
+--vim.cmd("colorscheme gruvbox")
+require('nightfox').load(nightfox)
+vim.cmd("hi Normal guibg=NONE ctermbg=NONE")

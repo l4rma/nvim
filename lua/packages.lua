@@ -2,9 +2,16 @@ require('packer').startup(function()
 	use 'wbthomason/packer.nvim'	-- Packception
 	use 'vimwiki/vimwiki'			-- VimWiki
 	use 'morhetz/gruvbox'			-- Colorscheme
+	use 'EdenEast/nightfox.nvim'	-- Colorscheme
 	use 'tpope/vim-fugitive'		-- Git plugin
-	use 'vim-airline/vim-airline'	-- Lean & mean status/tabline
+	--use 'vim-airline/vim-airline'	-- Lean & mean status/tabline
 	use 'preservim/nerdtree'		-- Nerdtree
+
+	--Status Line
+	use {
+		'nvim-lualine/lualine.nvim',
+		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+	}
 
 	-- Autopair
 	use {
@@ -46,6 +53,7 @@ require('packer').startup(function()
 			'hrsh7th/cmp-path',
 			'hrsh7th/cmp-buffer',
 			'saadparwaiz1/cmp_luasnip',
+			'rafamadriz/friendly-snippets',
 		},
 	}
 
