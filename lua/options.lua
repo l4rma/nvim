@@ -30,7 +30,9 @@ set.foldmethod = "expr"
 set.foldexpr = "nvim_treesitter#foldexpr()"
 set.foldenable = false
 
--- Set Colorscheme Gruvbox
---vim.cmd("colorscheme gruvbox")
-require('nightfox').load(nightfox)
+-- Colorscheme (now set by nightfox)
+--[[
+-- Set Colorscheme
+vim.cmd("colorscheme gruvbox")
 vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
+]]--

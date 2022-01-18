@@ -6,6 +6,7 @@ require('packer').startup(function()
 	use 'tpope/vim-fugitive'		-- Git plugin
 	--use 'vim-airline/vim-airline'	-- Lean & mean status/tabline
 	use 'preservim/nerdtree'		-- Nerdtree
+	use 'ryanoasis/vim-devicons'	-- Icons
 
 	--Status Line
 	use {
@@ -29,10 +30,12 @@ require('packer').startup(function()
 			require'alpha'.setup(require'alpha.themes.startify'.opts)
 			local startify = require("alpha.themes.startify")
 			startify.section.mru_cwd.val = { { type = "padding", val = 0 } }
+			startify.section.top_buttons.val = {
+				startify.button("e", " New file", ":ene <bar> startinsert <cr>"),
+			}
 			startify.section.bottom_buttons.val = {
-				startify.button("e", "new file", ":ene <bar> startinsert <cr>"),
-				startify.button("v", "neovim config", ":e ~/.config/nvim/init.lua<cr>"),
-				startify.button("q", "quit nvim", ":qa<cr>"),
+				startify.button("v", " Neovim config", ":e ~/.config/nvim/init.lua<cr>"),
+				startify.button("q", " Quit neovim", ":qa<cr>"),
 			}
 		end
 	}
