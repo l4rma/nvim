@@ -46,10 +46,11 @@ nkeymap('<leader>gl', ':diffget //3<cr>')
 
 
 -- Telescope
-nkeymap('<leader>ff', ':lua require("telescope.builtin").find_files({hidden=true})<cr>')
+nkeymap('<leader>t', ':lua require("telescope.builtin").find_files({hidden=true})<cr>')
 nkeymap('<leader>fg', '<cmd>Telescope live_grep<cr>')
-nkeymap('<leader>fb', '<cmd>Telescope buffers<cr>')
+nkeymap('<leader><tab>', '<cmd>Telescope buffers<cr>')
 nkeymap('<leader>fh', '<cmd>Telescope help_tags<cr>')
+nkeymap('<leader>fm', '<cmd>Telescope man_pages<cr>')
 
 -- LSP Mappings
 nkeymap('gd', ':lua vim.lsp.buf.definition()<cr>')

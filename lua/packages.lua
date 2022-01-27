@@ -7,6 +7,13 @@ require('packer').startup(function()
 	--use 'vim-airline/vim-airline'	-- Lean & mean status/tabline
 	use 'preservim/nerdtree'		-- Nerdtree
 	use 'ryanoasis/vim-devicons'	-- Icons
+	use 'fatih/vim-go'				-- Golang plugin
+
+	--Flutter-tools
+	use {
+		'akinsho/flutter-tools.nvim',
+		requires = 'nvim-lua/plenary.nvim'
+	}
 
 	--Status Line
 	use {

@@ -194,7 +194,7 @@ ls.snippets = {
 		}),
 		-- Experimenting, creating a snippet
 		s("iferrnotnull", {
-			t({"If err != nil {", "\t"}),
+			t({"if err != nil {", "\t"}),
 			i(1, "panic(err)"),
 			i(0),
 			t({ "", "}" }),

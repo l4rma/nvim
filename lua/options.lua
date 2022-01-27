@@ -31,8 +31,7 @@ set.foldexpr = "nvim_treesitter#foldexpr()"
 set.foldenable = false
 
 -- Colorscheme (now set by nightfox)
---[[
--- Set Colorscheme
-vim.cmd("colorscheme gruvbox")
-vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
-]]--
+--vim.cmd("colorscheme gruvbox")
+--set.background = "light" --'light' or 'dark'
+--vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
+
