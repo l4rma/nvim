@@ -15,7 +15,7 @@ require('treesitter')
 require('lsp')
 require('lua-snippets')
 require('lualine-conf')
-require('nightfox-conf')
+--require('nightfox-conf')
 require('comment-conf')
 require("telescope").load_extension("flutter")
 require('flutter-tools').setup{}

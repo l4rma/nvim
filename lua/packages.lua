@@ -3,11 +3,19 @@ require('packer').startup(function()
 	use 'vimwiki/vimwiki'			-- VimWiki
 	use 'morhetz/gruvbox'			-- Colorscheme
 	use 'EdenEast/nightfox.nvim'	-- Colorscheme
+	use 'sonph/onehalf'				-- Colorscheme
+	use 'joshdick/onedark.vim'		-- Colorscheme
+	use 'sainnhe/everforest'		-- Colorscheme
+	use 'sainnhe/sonokai'			-- Colorscheme
+	use 'phanviet/vim-monokai-pro'  -- Colorscheme
+	use 'sheerun/vim-polyglot'		-- Colorscheme
+	use 'NLKNguyen/papercolor-theme'-- Colorscheme
 	use 'tpope/vim-fugitive'		-- Git plugin
 	--use 'vim-airline/vim-airline'	-- Lean & mean status/tabline
 	use 'preservim/nerdtree'		-- Nerdtree
 	use 'ryanoasis/vim-devicons'	-- Icons
 	use 'fatih/vim-go'				-- Golang plugin
+	use 'vim-test/vim-test'			-- Testing
 
 	--Flutter-tools
 	use {

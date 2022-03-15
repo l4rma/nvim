@@ -9,8 +9,12 @@ end
 -- Save, Quit, Source, Alpha
 keymap('n', '<leader>w', ':w<CR>', {})
 keymap('n', '<leader>q', ':q<CR>', {})
+keymap('n', '<leader>wq', ':wq<CR>', {})
 keymap('n', '<leader>s', ':so %<CR>', {})
 keymap('n', '<c-n>', ':Alpha<cr>', opts)
+
+-- Misc
+keymap('n', '<leader>v', 'ggVG', opts)
 
 -- Moving text lines in visual, insert and normal mode
 keymap('v', 'J', ":m '>+1<CR>gv=gv", opts)
@@ -19,6 +23,9 @@ keymap('i', '<C-j>', "<esc>:m .+1<CR>==", opts)
 keymap('i', '<C-k>', "<esc>:m .-2<CR>==", opts)
 keymap('n', '<leader>j', ":m .+1<CR>==", opts)
 keymap('n', '<leader>k', ":m .-2<CR>==", opts)
+
+-- Copy to Clipboard
+keymap('v', '<leader>c', '"+y', opts)
 
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -41,12 +48,14 @@ keymap("n", "<leader>n", ":NERDTreeToggle<cr>", opts)
 
 -- Git (vim-fugitive)
 nkeymap('<leader>gs', ':G<cr>')
+nkeymap('<leader>gc', ':Git commit<cr>')
+nkeymap('<leader>gp', ':Git push<cr>')
 nkeymap('<leader>gh', ':diffget //2<cr>')
 nkeymap('<leader>gl', ':diffget //3<cr>')
 
 
 -- Telescope
-nkeymap('<leader>t', ':lua require("telescope.builtin").find_files({hidden=true})<cr>')
+nkeymap('<leader>t', ':lua require("telescope.builtin").find_files()<cr>')
 nkeymap('<leader>fg', '<cmd>Telescope live_grep<cr>')
 nkeymap('<leader><tab>', '<cmd>Telescope buffers<cr>')
 nkeymap('<leader>fh', '<cmd>Telescope help_tags<cr>')
