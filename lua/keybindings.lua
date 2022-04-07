@@ -75,5 +75,6 @@ nkeymap('<leader>af', ':lua vim.lsp.buf.code_action()<cr>')
 nkeymap('<a-cr>', ':lua vim.lsp.buf.code_action()<cr>')
 nkeymap('<leader>rn', ':lua vim.lsp.buf.rename()<cr>')
 
+nkeymap('gsd', ':only<bar>vsplit<CR>gd')
 
 
