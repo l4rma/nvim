@@ -1,5 +1,20 @@
-require('packer').startup(function()
+local ensure_packer = function()
+	local fn = vim.fn
+	local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+	if fn.empty(fn.glob(install_path)) > 0 then
+		fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+		vim.cmd [[packadd packer.nvim]]
+		return true
+	end
+	return false
+end
+
+local packer_bootstrap = ensure_packer()
+
+return require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'	-- Packception
+
+	-- My plugins here
 	use 'vimwiki/vimwiki'			-- VimWiki
 	use 'morhetz/gruvbox'			-- Colorscheme
 	use 'EdenEast/nightfox.nvim'	-- Colorscheme
@@ -11,22 +26,29 @@ require('packer').startup(function()
 	use 'sheerun/vim-polyglot'		-- Colorscheme
 	use 'NLKNguyen/papercolor-theme'-- Colorscheme
 	use 'tpope/vim-fugitive'		-- Git plugin
-	--use 'vim-airline/vim-airline'	-- Lean & mean status/tabline
 	use 'preservim/nerdtree'		-- Nerdtree
-	use 'ryanoasis/vim-devicons'	-- Icons
+	use 'nvim-tree/nvim-web-devicons' -- Icons
 	use 'fatih/vim-go'				-- Golang plugin
 	use 'vim-test/vim-test'			-- Testing
+	use 'ThePrimeagen/vim-be-good'  -- Vim trainer
+	use 'tpope/vim-surround'		-- Vim Surround
+	use 'sotte/presenting.vim'		-- Presentation mode
+	use 'Pocco81/true-zen.nvim'		-- Distraction free mode 
 
-	--Flutter-tools
+
+	-- Center buffer
+	use {"shortcuts/no-neck-pain.nvim", tag = "*" }
+
+	-- Flutter-tools
 	use {
 		'akinsho/flutter-tools.nvim',
 		requires = 'nvim-lua/plenary.nvim'
 	}
 
-	--Status Line
+	-- Status Line
 	use {
 		'nvim-lualine/lualine.nvim',
-		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
 	}
 
 	-- Autopair
@@ -37,12 +59,11 @@ require('packer').startup(function()
 		end
 	}
 
-	-- Alpha-nvim Dashboard
 	use {
 		'goolord/alpha-nvim',
-		requires = { 'kyazdani42/nvim-web-devicons' },
+		requires = { 'nvim-tree/nvim-web-devicons' },
 		config = function ()
-			require'alpha'.setup(require'alpha.themes.startify'.opts)
+			require'alpha'.setup(require'alpha.themes.startify'.config)
 			local startify = require("alpha.themes.startify")
 			startify.section.mru_cwd.val = { { type = "padding", val = 0 } }
 			startify.section.top_buttons.val = {
@@ -61,6 +82,8 @@ require('packer').startup(function()
 	-- LSP
 	use 'neovim/nvim-lspconfig'
 	use 'williamboman/nvim-lsp-installer'
+
+	use { "mfussenegger/nvim-jdtls", ft = { "java" }}
 
 	-- Autocomplete
 	use {
@@ -81,13 +104,6 @@ require('packer').startup(function()
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
 
-	-- Markdown Previewer
-	use({ "iamcco/markdown-preview.nvim",
-		run = "cd app && npm install",
-		setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
-		ft = { "markdown" },
-	})
-
 	-- Commnent.Nvim
 	use {
 		'numToStr/Comment.nvim',
@@ -96,4 +112,9 @@ require('packer').startup(function()
 		end
 	}
 
+	-- Automatically set up your configuration after cloning packer.nvim
+	-- Put this at the end after all plugins
+	if packer_bootstrap then
+		require('packer').sync()
+	end
 end)

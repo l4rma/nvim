@@ -15,17 +15,26 @@ keymap('n', '<c-n>', ':Alpha<cr>', opts)
 
 -- Misc
 keymap('n', '<leader>v', 'ggVG', opts)
+keymap('n', 'Y', 'yy', opts)
 
+-- shift+k in visual mode open man page for highlighted word
 -- Moving text lines in visual, insert and normal mode
-keymap('v', 'J', ":m '>+1<CR>gv=gv", opts)
-keymap('v', 'K', ":m '<-2<CR>gv=gv", opts)
-keymap('i', '<C-j>', "<esc>:m .+1<CR>==", opts)
-keymap('i', '<C-k>', "<esc>:m .-2<CR>==", opts)
-keymap('n', '<leader>j', ":m .+1<CR>==", opts)
-keymap('n', '<leader>k', ":m .-2<CR>==", opts)
+--keymap('v', 'J', ":m '>+1<CR>gv=gv", opts)
+--keymap('v', 'K', ":m '<-2<CR>gv=gv", opts)
+--keymap('i', '<C-j>', "<esc>:m .+1<CR>==", opts)
+--keymap('i', '<C-k>', "<esc>:m .-2<CR>==", opts)
+--keymap('n', '<leader>j', ":m .+1<CR>==", opts)
+--keymap('n', '<leader>k', ":m .-2<CR>==", opts)
 
--- Copy to Clipboard
+-- Copy highlighted text to Clipboard
 keymap('v', '<leader>c', '"+y', opts)
+
+-- Copy filename to clipboard
+nkeymap('<leader>cf', ':let @+ = expand("%")<cr>')
+
+-- Paste last yanked
+keymap('n', '<leader>p', '"0p', opts)
+keymap('v', '<leader>p', '"0p', opts)
 
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -77,4 +86,13 @@ nkeymap('<leader>rn', ':lua vim.lsp.buf.rename()<cr>')
 
 nkeymap('gsd', ':only<bar>vsplit<CR>gd')
 
+-- Remove Ansi color escape code
+nkeymap('<leader>rc', ':%s/\\e\\[[0-9;]*m//g<cr>')
 
+-- VimWiki
+-- TODO: Add shortcuts for: insert table
+nkeymap('<leader>it', ':VimwikiTable 3 3<cr>')
+
+-- Zen/Focus
+nkeymap('<leader>fa', ':TZAtaraxis<cr>')
+nkeymap('<leader>ff', ':TZFocus<cr>')

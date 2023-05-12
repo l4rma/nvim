@@ -13,9 +13,7 @@ require('packages')
 require('nvim-cmp')
 require('treesitter')
 require('lsp')
+require('zen')
 require('lua-snippets')
 require('lualine-conf')
---require('nightfox-conf')
-require('comment-conf')
-require("telescope").load_extension("flutter")
-require('flutter-tools').setup{}
+
