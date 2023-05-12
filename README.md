@@ -1,18 +1,5 @@
-## Config files for nvim
+# Config files for neovim
 
-Rewriting init.vim to init.lua and seperating into multiple files
+My vim config written in lua.
 
-still in progress..
-
-### Packages:
-* Treesitter
-* lspconfig
-	* LuaSnip
-	* nvim-cmp
-* Telescope
-* Alpha-nvim
-* Nerdtree
-* vim-fugitive
-* Autopair
-* Lualine
-* Nightfox
+A never ending project... :D
