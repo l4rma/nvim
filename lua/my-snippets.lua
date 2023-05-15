@@ -10,23 +10,34 @@ local d = ls.dynamic_node
 local r = ls.restore_node
 
 ls.add_snippets("all", {
-	-- trigger is fn.
-	s("fn", {
-		-- Simple static text.
-		--t("//Parameters: "),
-		-- function, first parameter is the function, second the Placeholders
-		-- whose text it gets as input.
-		--f(copy, 2),
-		t({ "func " }),
-		-- Placeholder/Insert.
-		i(1),
-		t("("),
-		-- Placeholder with initial text.
-		i(2, ""),
-		-- Linebreak
-		t({ ") {", "\t" }),
-		-- Last Placeholder, exit Point of the snippet. EVERY 'outer' SNIPPET NEEDS Placeholder 0.
+	-- Insert a full week for work todos
+	s("newWeek", {
+		t({"## " }),
+		t(os.date("%Y-%m-%d", os.time()+4*24*60*60)),
+		t({" - Fredag", ""}),
+		t({"* [ ] ", ""}),
+		t({"* [ ] Føre timer i PowerOffice", ""}),
+		t({"* [ ] Føre timer i Timekeeper", "", ""}),
+
+		t({"## " }),
+		t(os.date("%Y-%m-%d", os.time()+3*24*60*60)),
+		t({" - Torsdag", ""}),
+		t({"* [ ] ", "", ""}),
+		
+		t({"## " }),
+		t(os.date("%Y-%m-%d", os.time()+2*24*60*60)),
+		t({" - Onsdag", ""}),
+		t({"* [ ] ", "", ""}),
+
+		t({"## " }),
+		t(os.date("%Y-%m-%d", os.time()+1*24*60*60)),
+		t({" - Tirsdag", ""}),
+		t({"* [ ] ", "", ""}),
+
+		t({"## " }),
+		t(os.date("%Y-%m-%d")),
+		t({" - Mandag", ""}),
+		t({"* [ ] "}),
 		i(0),
-		t({ "", "}" }),
 	}),
 })
