@@ -96,3 +96,6 @@ nkeymap('<leader>it', ':VimwikiTable 3 3<cr>')
 -- Zen/Focus
 nkeymap('<leader>fa', ':TZAtaraxis<cr>')
 nkeymap('<leader>ff', ':TZFocus<cr>')
+
+-- Cellular automation
+nkeymap('<leader>fml', '<cmd>CellularAutomaton make_it_rain<CR>')

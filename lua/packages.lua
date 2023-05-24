@@ -34,6 +34,7 @@ return require('packer').startup(function(use)
 	use 'tpope/vim-surround'		-- Vim Surround
 	use 'sotte/presenting.vim'		-- Presentation mode
 	use 'Pocco81/true-zen.nvim'		-- Distraction free mode 
+	use 'eandrju/cellular-automaton.nvim'
 
 
 	-- Center buffer
