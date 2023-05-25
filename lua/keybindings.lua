@@ -3,6 +3,9 @@ vim.g.mapleader = " "
 local keymap = vim.api.nvim_set_keymap
 
 local opts = { noremap = true }
+local function vkeymap(key, map)
+	keymap('v', key, map, opts)
+end
 local function nkeymap(key, map)
 	keymap('n', key, map, opts)
 end
@@ -99,3 +102,6 @@ nkeymap('<leader>ff', ':TZFocus<cr>')
 
 -- Cellular automation
 nkeymap('<leader>fml', '<cmd>CellularAutomaton make_it_rain<CR>')
+
+-- Misc/Unsorted
+vkeymap('"', 's""hp')
