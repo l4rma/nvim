@@ -1,3 +1,10 @@
+-- ██████╗ ██╗     ██╗   ██╗ ██████╗ ██╗███╗   ██╗███████╗
+-- ██╔══██╗██║     ██║   ██║██╔════╝ ██║████╗  ██║██╔════╝
+-- ██████╔╝██║     ██║   ██║██║  ███╗██║██╔██╗ ██║███████╗
+-- ██╔═══╝ ██║     ██║   ██║██║   ██║██║██║╚██╗██║╚════██║
+-- ██║     ███████╗╚██████╔╝╚██████╔╝██║██║ ╚████║███████║
+-- ╚═╝     ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝╚═╝  ╚═══╝╚══════╝
+
 local ensure_packer = function()
 	local fn = vim.fn
 	local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -15,27 +22,27 @@ return require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'	-- Packception
 
 	-- My plugins here
-	use 'vimwiki/vimwiki'			-- VimWiki
-	use 'morhetz/gruvbox'			-- Colorscheme
-	use 'EdenEast/nightfox.nvim'	-- Colorscheme
-	use 'sonph/onehalf'				-- Colorscheme
-	use 'joshdick/onedark.vim'		-- Colorscheme
-	use 'sainnhe/everforest'		-- Colorscheme
-	use 'sainnhe/sonokai'			-- Colorscheme
-	use 'phanviet/vim-monokai-pro'  -- Colorscheme
-	use 'sheerun/vim-polyglot'		-- Colorscheme
-	use 'NLKNguyen/papercolor-theme'-- Colorscheme
-	use 'tpope/vim-fugitive'		-- Git plugin
-	use 'preservim/nerdtree'		-- Nerdtree
-	use 'nvim-tree/nvim-web-devicons' -- Icons
-	use 'fatih/vim-go'				-- Golang plugin
-	use 'vim-test/vim-test'			-- Testing
-	use 'ThePrimeagen/vim-be-good'  -- Vim trainer
-	use 'tpope/vim-surround'		-- Vim Surround
-	use 'sotte/presenting.vim'		-- Presentation mode
-	use 'Pocco81/true-zen.nvim'		-- Distraction free mode 
-	use 'eandrju/cellular-automaton.nvim'
-
+	use 'vimwiki/vimwiki'					-- VimWiki
+	use 'morhetz/gruvbox'					-- Colorscheme
+	use 'EdenEast/nightfox.nvim'			-- Colorscheme
+	use 'sonph/onehalf'						-- Colorscheme
+	use 'joshdick/onedark.vim'				-- Colorscheme
+	use 'sainnhe/everforest'				-- Colorscheme
+	use 'sainnhe/sonokai'					-- Colorscheme
+	use 'phanviet/vim-monokai-pro'  		-- Colorscheme
+	use 'sheerun/vim-polyglot'				-- Colorscheme
+	use 'NLKNguyen/papercolor-theme'		-- Colorscheme
+	use 'tpope/vim-fugitive'				-- Git plugin
+	use 'preservim/nerdtree'				-- Nerdtree
+	use 'nvim-tree/nvim-web-devicons'		-- Icons
+	use 'fatih/vim-go'						-- Golang plugin
+	use 'vim-test/vim-test'					-- Testing
+	use 'ThePrimeagen/vim-be-good'  		-- Vim trainer
+	use 'tpope/vim-surround'				-- Vim Surround
+	use 'sotte/presenting.vim'				-- Presentation mode
+	use 'Pocco81/true-zen.nvim'				-- Distraction free mode 
+	use 'eandrju/cellular-automaton.nvim'	-- Funz
+	use 'tpope/vim-repeat'					-- Enable better '.' use
 
 	-- Center buffer
 	use {"shortcuts/no-neck-pain.nvim", tag = "*" }
@@ -60,6 +67,7 @@ return require('packer').startup(function(use)
 		end
 	}
 
+	-- Alpha - Vim Dashboard
 	use {
 		'goolord/alpha-nvim',
 		requires = { 'nvim-tree/nvim-web-devicons' },
@@ -113,8 +121,7 @@ return require('packer').startup(function(use)
 		end
 	}
 
-	-- Automatically set up your configuration after cloning packer.nvim
-	-- Put this at the end after all plugins
+	-- Automatically set up configuration after cloning packer.nvim
 	if packer_bootstrap then
 		require('packer').sync()
 	end
