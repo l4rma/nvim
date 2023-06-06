@@ -60,3 +60,6 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
     vim.api.nvim_set_keymap('n', 'f', ':TZAtaraxis<cr>', { noremap = true })
   end
 })
+
+-- Highlight yanked text
+vim.cmd("au TextYankPost * silent! lua vim.highlight.on_yank {higroup=\"IncSearch\", timeout=150}")
