@@ -70,6 +70,7 @@ vkeymap('\'', 's\'\'hp')
 
 -- Copy highlighted text to Clipboard
 vkeymap('<leader>c', '"+y')
+vkeymap('<leader>y', 'viw"+y')
 
 -- Copy filename to clipboard
 nkeymap('<leader>cf', ':let @+ = expand("%")<cr>')
