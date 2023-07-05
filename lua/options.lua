@@ -63,3 +63,22 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
 
 -- Highlight yanked text
 vim.cmd("au TextYankPost * silent! lua vim.highlight.on_yank {higroup=\"IncSearch\", timeout=150}")
+
+-- Format file and set filetype to JSON
+function format_json()
+  vim.cmd("%! jq")
+  vim.cmd("set ft=json")
+end
+vim.api.nvim_create_user_command('JSON', format_json, {})
+
+-- Resize columns in PSV file
+function psv_resize_columns()
+  vim.cmd(":%s/||/| |/g")
+  vim.cmd(":%s/||/| |/g")
+  vim.cmd(":%! column -t -s \"|\"")
+  vim.cmd(":split")
+  vim.cmd("wincmd w")
+  vim.cmd("resize 1")
+  vim.cmd("wincmd w")
+end
+vim.api.nvim_create_user_command('FixPsv', psv_resize_columns, {})

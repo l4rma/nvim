@@ -85,6 +85,13 @@ nkeymap('<leader>rc', ':%s/\\e\\[[0-9;]*m//g<cr>')
 -- Go to definition in vertical split
 nkeymap('gsd', ':only<bar>vsplit<CR>gd')
 
+-- Resize columns in pipe seperated value files
+nkeymap('<leader>å', ':%s/||/| |/g<CR>:%s/||/| |/g<CR>:%! column -t -s "|"<CR>')
+--nkeymap('<leader>å', ':FixPsv<CR>')
+
+-- Format JSON file
+nkeymap('<leader>fj', ':JSON<CR>') -- Ref: ./options.lua
+
 -------------
 -- Plugins --
 -------------
