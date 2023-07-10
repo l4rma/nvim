@@ -15,7 +15,6 @@ ls.add_snippets("all", {
 		t({"## " }),
 		t(os.date("%Y-%m-%d", os.time()+4*24*60*60)),
 		t({" - Fredag", ""}),
-		t({"* [ ] ", ""}),
 		t({"* [ ] Føre timer i PowerOffice", ""}),
 		t({"* [ ] Føre timer i Timekeeper", "", ""}),
 
