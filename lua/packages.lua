@@ -32,7 +32,7 @@ return require('packer').startup(function(use)
 	use 'phanviet/vim-monokai-pro'  		-- Colorscheme
 	use 'sheerun/vim-polyglot'				-- Colorscheme
 	use 'NLKNguyen/papercolor-theme'		-- Colorscheme
-	use 'tpope/vim-fugitive'				-- Git plugin
+	--use 'tpope/vim-fugitive'				-- Git plugin
 	use 'preservim/nerdtree'				-- Nerdtree
 	use 'nvim-tree/nvim-web-devicons'		-- Icons
 	use 'fatih/vim-go'						-- Golang plugin
@@ -43,6 +43,11 @@ return require('packer').startup(function(use)
 	use 'Pocco81/true-zen.nvim'				-- Distraction free mode 
 	use 'eandrju/cellular-automaton.nvim'	-- Funz
 	use 'tpope/vim-repeat'					-- Enable better '.' use
+	use "sindrets/diffview.nvim"			-- Diff view and Merge tool
+
+	
+	-- Git plugin (Magit clone for nvim)
+	use { 'NeogitOrg/neogit', requires = 'nvim-lua/plenary.nvim' }
 
 	-- Center buffer
 	use {"shortcuts/no-neck-pain.nvim", tag = "*" }
