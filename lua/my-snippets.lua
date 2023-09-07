@@ -39,4 +39,8 @@ ls.add_snippets("all", {
 		t({"* [ ] "}),
 		i(0),
 	}),
+	s("dato", {
+		t(os.date("%d.%m.%y")),
+		i(0),
+	})
 })
