@@ -16,4 +16,3 @@ require('lsp')
 require('zen')
 require('lua-snippets')
 require('lualine-conf')
-

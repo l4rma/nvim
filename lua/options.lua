@@ -82,3 +82,11 @@ function psv_resize_columns()
   vim.cmd("wincmd w")
 end
 vim.api.nvim_create_user_command('FixPsv', psv_resize_columns, {})
+
+-- Leader+enter toggles checkbox in markdown files
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+  pattern = {"*.md"},
+  callback = function() 
+    vim.api.nvim_set_keymap('n', '<leader><CR>', ':lua require("toggle-checkbox").toggle()<CR>', { noremap = true })
+  end
+})
