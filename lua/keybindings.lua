@@ -92,6 +92,9 @@ nkeymap('<leader>å', ':%s/||/| |/g<CR>:%s/||/| |/g<CR>:%! column -t -s "|"<CR>'
 -- Format JSON file
 nkeymap('<leader>fj', ':JSON<CR>') -- Ref: ./options.lua
 
+-- Open selected text in vertical split
+vkeymap('s', ':lua OpenSelectedTextInSplit()<CR>')
+
 -------------
 -- Plugins --
 -------------

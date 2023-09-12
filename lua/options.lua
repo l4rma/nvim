@@ -71,6 +71,12 @@ function format_json()
 end
 vim.api.nvim_create_user_command('JSON', format_json, {})
 
+function format_xml()
+  vim.cmd("%! xmllint --format -")
+  vim.cmd("set ft=xml")
+end
+vim.api.nvim_create_user_command('XML', format_json, {})
+
 -- Resize columns in PSV file
 function psv_resize_columns()
   vim.cmd(":%s/||/| |/g")
@@ -90,3 +96,30 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
     vim.api.nvim_set_keymap('n', '<leader><CR>', ':lua require("toggle-checkbox").toggle()<CR>', { noremap = true })
   end
 })
+
+local function get_visual_selection()
+    local s_start = vim.fn.getpos("'<")
+    local s_end = vim.fn.getpos("'>")
+    local n_lines = math.abs(s_end[2] - s_start[2]) + 1
+    local lines = vim.api.nvim_buf_get_lines(0, s_start[2] - 1, s_end[2], false)
+    lines[1] = string.sub(lines[1], s_start[3], -1)
+    if n_lines == 1 then
+        lines[n_lines] = string.sub(lines[n_lines], 1, s_end[3] - s_start[3] + 1)
+    else
+      lines[n_lines] = string.sub(lines[n_lines], 1, s_end[3])
+    end
+    return table.concat(lines, '\n')
+end
+  
+function OpenSelectedTextInSplit()
+    local selected_text = get_visual_selection()
+    local temp_file = vim.fn.tempname()
+
+    -- Save the selected text to a temp file
+    local file = io.open(temp_file, "w")
+    file:write(selected_text)
+    file:close()
+
+    -- Open the temp file in a new split
+    vim.cmd('vsplit ' .. temp_file)
+end
