@@ -32,6 +32,9 @@ nkeymap('<leader>v', 'ggVG')
 -- Yank line
 nkeymap('Y', 'yy')
 
+-- Delete word on macOs
+vim.api.nvim_set_keymap('i', '<M-bs>', '<c-w>', opts)
+
 -- Better window navigation
 nkeymap("<C-h>", "<C-w>h")
 nkeymap("<C-j>", "<C-w>j")

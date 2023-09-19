@@ -72,10 +72,10 @@ end
 vim.api.nvim_create_user_command('JSON', format_json, {})
 
 function format_xml()
-  vim.cmd("%! xmllint --format -")
+  vim.cmd("%!xmllint --format -")
   vim.cmd("set ft=xml")
 end
-vim.api.nvim_create_user_command('XML', format_json, {})
+vim.api.nvim_create_user_command('XML', format_xml, {})
 
 -- Resize columns in PSV file
 function psv_resize_columns()
