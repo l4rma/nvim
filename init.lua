@@ -7,12 +7,5 @@
 ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝     ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝     ╚═╝ ╚═════╝ 
 ]]--
 
-require('options')
-require('keybindings')
-require('packages')
-require('nvim-cmp')
-require('treesitter')
-require('lsp')
-require('zen')
-require('lua-snippets')
-require('lualine-conf')
+require('config')
+require('plugins')

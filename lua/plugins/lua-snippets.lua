@@ -162,7 +162,7 @@ local date_input = function(args, state, fmt)
 end
 
 -- My snippets
-require("my-snippets")
+require("utils.my-snippets")
 
 -- autotriggered snippets have to be defined in a separate table, luasnip.autosnippets.
 ls.autosnippets = {

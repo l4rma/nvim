@@ -32,8 +32,8 @@ return require('packer').startup(function(use)
 	use 'phanviet/vim-monokai-pro'  		-- Colorscheme
 	use 'sheerun/vim-polyglot'				-- Colorscheme
 	use 'NLKNguyen/papercolor-theme'		-- Colorscheme
-	--use 'tpope/vim-fugitive'				-- Git plugin
-	use 'preservim/nerdtree'				-- Nerdtree
+	-- use 'tpope/vim-fugitive'				-- Git plugin
+	-- use 'preservim/nerdtree'				-- Nerdtree
 	use 'nvim-tree/nvim-web-devicons'		-- Icons
 	use 'fatih/vim-go'						-- Golang plugin
 	use 'vim-test/vim-test'					-- Testing
@@ -44,8 +44,8 @@ return require('packer').startup(function(use)
 	use 'eandrju/cellular-automaton.nvim'	-- Funz
 	use 'tpope/vim-repeat'					-- Enable better '.' use
 	use "sindrets/diffview.nvim"			-- Diff view and Merge tool
+	use 'diepm/vim-rest-console'			-- "Postman"
 
-	
 	-- Git plugin (Magit clone for nvim)
 	use { 'NeogitOrg/neogit', requires = 'nvim-lua/plenary.nvim' }
 
@@ -93,9 +93,15 @@ return require('packer').startup(function(use)
 	-- Treesitter
 	use 'nvim-treesitter/nvim-treesitter'
 
+	-- CoC
+	--use {'neoclide/coc.nvim', branch = 'master', run = 'yarn install --frozen-lockfile'}
+
 	-- LSP
-	use 'neovim/nvim-lspconfig'
-	use 'williamboman/nvim-lsp-installer'
+	use {
+		"williamboman/mason.nvim",
+		"williamboman/mason-lspconfig.nvim",
+		"neovim/nvim-lspconfig",
+	}
 
 	use { "mfussenegger/nvim-jdtls", ft = { "java" }}
 
@@ -126,14 +132,31 @@ return require('packer').startup(function(use)
 		end
 	}
 
-	-- Markdown Preview
-	-- install without yarn or npm
-	--use({
-	--	"iamcco/markdown-preview.nvim",
-	--	run = function() vim.fn["mkdp#util#install"]() end,
-	--})
+	-- Tree
+	use {
+		'nvim-tree/nvim-tree.lua',
+		requires = {
+			'nvim-tree/nvim-web-devicons', -- optional
+		},
+	}
 
-	use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+	-- Folding
+	use {
+		'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'
+	}
+	require('ufo').setup()
+	--use { 'anuvyklack/pretty-fold.nvim',
+	--	config = function()
+	--		require('pretty-fold').setup()
+	--	end
+	--}
+
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = "cd app && npm install",
+		setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
+		ft = { "markdown" },
+	})
 
 	-- Automatically set up configuration after cloning packer.nvim
 	if packer_bootstrap then

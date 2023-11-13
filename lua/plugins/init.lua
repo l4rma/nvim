@@ -1,0 +1,11 @@
+-- Plugins
+require('plugins.packages')
+require('plugins.nvim-cmp')
+require('plugins.treesitter')
+--require("plugins.coc")
+require('plugins.lsp')
+require('plugins.zen')
+require('plugins.lua-snippets')
+require('plugins.lualine-conf')
+require('plugins.tree')
+require('plugins.mason')
