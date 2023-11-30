@@ -45,6 +45,7 @@ return require('packer').startup(function(use)
 	use 'tpope/vim-repeat'					-- Enable better '.' use
 	use "sindrets/diffview.nvim"			-- Diff view and Merge tool
 	use 'diepm/vim-rest-console'			-- "Postman"
+    use 'simrat39/rust-tools.nvim'
 
 	-- Git plugin (Magit clone for nvim)
 	use { 'NeogitOrg/neogit', requires = 'nvim-lua/plenary.nvim' }

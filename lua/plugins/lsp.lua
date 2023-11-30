@@ -10,3 +10,5 @@ lspconfig.tsserver.setup({
     root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
 })
 lspconfig.jdtls.setup{}
+lspconfig.rust_analyzer.setup{}
+
