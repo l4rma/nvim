@@ -37,6 +37,12 @@ set.foldmethod = "expr"
 set.foldexpr = "nvim_treesitter#foldexpr()"
 set.foldenable = false
 
+-- Colorscheme
+vim.cmd("colorscheme duskfox")
+set.background = "dark" --'light' or 'dark'
+--vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
+--vim.cmd("hi NormalNC guibg=NONE ctermbg=NONE")
+
 -- VimWiki directory and filetype
 vim.cmd("let g:vimwiki_list = [{'path': '$HOME/Dropbox/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]")
  
