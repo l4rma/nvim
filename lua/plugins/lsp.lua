@@ -1,7 +1,16 @@
 -- LSP
 -- Setup language servers.
 local lspconfig = require('lspconfig')
-lspconfig.lua_ls.setup {}
+lspconfig.lua_ls.setup {
+  settings = {
+    Lua = {
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+    },
+  },
+}
 -- typescript
 lspconfig.tsserver.setup({
     filetypes = {
@@ -11,4 +20,3 @@ lspconfig.tsserver.setup({
 })
 lspconfig.jdtls.setup{}
 lspconfig.rust_analyzer.setup{}
-
