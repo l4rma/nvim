@@ -1,5 +1,4 @@
 return {
-	'vimwiki/vimwiki',					-- VimWiki
 	'morhetz/gruvbox',					-- Colorscheme
 	'EdenEast/nightfox.nvim',			-- Colorscheme
 	'sonph/onehalf',					-- Colorscheme
@@ -21,6 +20,7 @@ return {
 	'sindrets/diffview.nvim',			-- Diff view and Merge tool
 	'diepm/vim-rest-console',			-- "Postman"
 	'shortcuts/no-neck-pain.nvim',		-- Center buffer
+
 	-- Git plugin (Magit clone for nvim)
 	{ 'NeogitOrg/neogit', dependencies = 'nvim-lua/plenary.nvim' },
 
@@ -85,6 +85,7 @@ return {
 	},
 	--require('ufo').setup()
 
+	--TODO: fix markdown preview
 	({
 		"iamcco/markdown-preview.nvim",
 		build = "cd app && npm install",
@@ -92,15 +93,3 @@ return {
 		ft = { "markdown" },
 	}),
 }
-
--- Plugins
---require('plugins.nvim-cmp')
---require('plugins.treesitter')
---require('plugins.lsp')
---require('plugins.zen')
---require('plugins.lua-snippets')
---require('plugins.lualine-conf')
---require('plugins.tree')
---require('plugins.nightfox')
---require('plugins.mason')
---require('plugins.rust-tools')

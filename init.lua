@@ -7,5 +7,6 @@
 ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝     ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝     ╚═╝ ╚═════╝ 
 ]]--
 
+vim.cmd("let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/','syntax': 'markdown', 'ext': '.md'}]")
 require('config')
 require('plugins')

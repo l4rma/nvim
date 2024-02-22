@@ -21,5 +21,6 @@ return {
 			})
 		lspconfig.jdtls.setup{}
 		lspconfig.rust_analyzer.setup{}
+		lspconfig.hls.setup{}
 	end
 }
