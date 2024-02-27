@@ -37,6 +37,8 @@ return {
 			require('nvim-autopairs').setup()
 		end
 	},
+	-- Colorscheme
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 
 	-- Alpha - Vim Dashboard
 	{
