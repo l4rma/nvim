@@ -28,6 +28,7 @@ set.tgc = true                                    -- Term Gui Colors: Enable 24-
 set.wmnu = true                                   -- Wild Menu: Tab auto complete in command line.
 set.list = true
 set.listchars = {eol = '↵', space = '·', trail = '·', tab = '⋮·'}
+set.conceallevel = 1
 
 -- Set GUI Cursor: Block. Blinking in insert-mode. Underline in replace-mode and while operation pending
 set.gcr = "n-v-c-sm-i-ci-ve:block,r-cr-o:hor20,i:blinkwait0-blinkoff400-blinkon250-Cursor/lCursor" 
