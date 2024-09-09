@@ -38,8 +38,9 @@ set.foldexpr = "nvim_treesitter#foldexpr()"
 set.foldenable = false
 
 -- Colorscheme
-vim.cmd("colorscheme catppuccin-frappe")
+vim.cmd("colorscheme everforest")
 set.background = "dark" --'light' or 'dark'
+vim.api.nvim_set_hl(1, "Normal", {guibg=NONE, ctermbg=NONE})
 --vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
 --vim.cmd("hi NormalNC guibg=NONE ctermbg=NONE")
 -- Telescope flutter extention

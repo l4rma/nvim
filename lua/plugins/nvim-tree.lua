@@ -31,6 +31,11 @@ return {
 		require("nvim-tree").setup({
 				on_attach = my_on_attach,
 				sort_by = "case_sensitive",
+				actions = {
+				    open_file = {
+				      quit_on_open = true,
+					},
+				},
 				view = {
 					width = 30,
 				},
