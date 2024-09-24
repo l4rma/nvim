@@ -54,6 +54,8 @@ nkeymap("<C-Right>", ":vertical resize +2<CR>")
 -- Naviagate buffers
 nkeymap("<S-l>", ":bnext<CR>")
 nkeymap("<S-h>", ":bprevious<CR>")
+nkeymap("<leader>bd", ":bd<CR>")
+nkeymap("<leader>bl", ":buffers<CR>")
 
 -- Surround highlighted text
 vkeymap('"', 's""hp')

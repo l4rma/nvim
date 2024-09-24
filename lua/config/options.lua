@@ -27,7 +27,7 @@ set.bk = false                                    -- Backup: Don't make backup f
 set.tgc = true                                    -- Term Gui Colors: Enable 24-bit RGB color
 set.wmnu = true                                   -- Wild Menu: Tab auto complete in command line.
 set.list = true
-set.listchars = {eol = '↵', space = '·', trail = '·', tab = '⋮·'}
+--set.listchars = {eol = '↵', space = '·', trail = '·', tab = '⋮·'}
 set.conceallevel = 1
 
 -- Set GUI Cursor: Block. Blinking in insert-mode. Underline in replace-mode and while operation pending
