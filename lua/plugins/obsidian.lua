@@ -41,7 +41,7 @@ return {
 					end
 				},
 			},
-			notes_subdir = "index",
+			notes_subdir = "inbox",
 			new_notes_location = "notes_subdir",
 			note_id_func = function(title)
 				local suffix = ""
@@ -77,6 +77,12 @@ return {
 				  end
 				end
 				return out
+			end,
+			follow_url_func = function(url)
+				vim.fn.jobstart({"xdg-open", url})  -- linux
+			end,
+			follow_img_func = function(img)
+				vim.fn.jobstart({"qview", img})
 			end,
 		})
 	end

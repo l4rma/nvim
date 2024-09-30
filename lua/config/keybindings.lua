@@ -137,11 +137,13 @@ nkeymap('<a-cr>', ':lua vim.lsp.buf.code_action()<cr>')
 nkeymap('<leader>rn', ':lua vim.lsp.buf.rename()<cr>')
 
 -- Obsidian.nvim
-nkeymap('<leader>oo', ':ObsidianSearch<cr>')
+nkeymap('<leader>oo', ':ObsidianQuickSwitch<cr>')
+nkeymap('<leader>os', ':ObsidianSearch<cr>')
 nkeymap('<leader>on', ':ObsidianNew<cr>')
 nkeymap('<leader>ot', ':ObsidianTags<cr>')
 nkeymap('<leader>oc', ':ObsidianTemplate<cr>')
 nkeymap('<leader>oi', ':ObsidianTOC<cr>') -- index / table of content
+nkeymap('<leader>ob', ':ObsidianBacklinks<cr>') -- index / table of content
 
 -- VimWiki
 -- TODO: Add shortcuts for: insert table

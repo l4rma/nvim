@@ -39,7 +39,7 @@ set.foldexpr = "nvim_treesitter#foldexpr()"
 set.foldenable = false
 
 -- Colorscheme
-vim.cmd("colorscheme catppuccin-frappe")
+vim.cmd("colorscheme everforest")
 set.background = "dark" --'light' or 'dark'
 --vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
 --vim.cmd("hi NormalNC guibg=NONE ctermbg=NONE")
