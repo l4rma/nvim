@@ -29,6 +29,10 @@ nkeymap('<c-n>', ':Alpha<cr>')
 -- Highlight all
 nkeymap('<leader>v', 'ggVG')
 
+-- Toggle transparent background
+nkeymap('<leader>b0', ':lua vim.api.nvim_set_hl(0, "Normal", {guibg=NONE, ctermbg=NONE})<CR>')
+nkeymap('<leader>b1', ':lua vim.api.nvim_set_hl(1, "Normal", {guibg=NONE, ctermbg=NONE})<CR>')
+
 -- Yank line
 nkeymap('Y', 'yy')
 
@@ -50,6 +54,8 @@ nkeymap("<C-Right>", ":vertical resize +2<CR>")
 -- Naviagate buffers
 nkeymap("<S-l>", ":bnext<CR>")
 nkeymap("<S-h>", ":bprevious<CR>")
+nkeymap("<leader>bd", ":bd<CR>")
+nkeymap("<leader>bl", ":buffers<CR>")
 
 -- Surround highlighted text
 vkeymap('"', 's""hp')
