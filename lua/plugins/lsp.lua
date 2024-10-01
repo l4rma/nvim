@@ -22,6 +22,7 @@ return {
 		lspconfig.jdtls.setup{}
 		lspconfig.rust_analyzer.setup{}
 		lspconfig.hls.setup{}
-		lspconfig.gopls.setup{}
+		lspconfig.tflint.setup{}
+		lspconfig.terraformls.setup{}
 	end
 }
