@@ -12,17 +12,9 @@ return {
 				},
 			},
 		}
-		-- typescript
-		lspconfig.tsserver.setup({
-				filetypes = {
-					"typescript",
-				},
-				root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
-			})
-		lspconfig.jdtls.setup{}
 		lspconfig.rust_analyzer.setup{}
 		lspconfig.hls.setup{}
-		lspconfig.tflint.setup{}
 		lspconfig.terraformls.setup{}
+		lspconfig.html.setup{}
 	end
 }
