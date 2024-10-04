@@ -96,6 +96,14 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
   end
 })
 
+-- gi opens img link in qview
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+  pattern = {"*.md"},
+  callback = function()
+    vim.api.nvim_set_keymap('n', 'gi', ':lua require("utils.open-img").open()<CR>', { noremap = true })
+  end
+})
+
 local function get_visual_selection()
     local s_start = vim.fn.getpos("'<")
     local s_end = vim.fn.getpos("'>")

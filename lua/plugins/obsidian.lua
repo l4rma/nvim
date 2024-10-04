@@ -82,7 +82,8 @@ return {
 				vim.fn.jobstart({"xdg-open", url})  -- linux
 			end,
 			follow_img_func = function(img)
-				vim.fn.jobstart({"xdg-open", img})
+				vim.print("Hello world. Img: " .. img)
+				--vim.cmd(":!qview " .. img)
 			end,
 			ui = {
 				checkboxes = {
