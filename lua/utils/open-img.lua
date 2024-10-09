@@ -12,11 +12,12 @@ M.open = function()
   -- Check if the cursor is on a markdown image link
   if link_start and link_end and col >= link_start and col <= link_end then
     -- Extract the image URL
-    local url = line:match("!%[.-%]%((.-)%)")
+    --local url = line:match("!%[.-%]%((.-)%)")
+	local url = line:match("!%[.-%]%(.*/resources(.+)%)")
     if url then
       -- Open the image in qview
 --      vim.fn.jobstart({"qview", url}, {detach = true}) NO IDEA WHY THIS IS NOT WORKING! :((((
-      vim.cmd(":!qview " .. url)
+      vim.cmd(":!qview ~/Dropbox/vault/resources" .. url)
     else
       print("No valid image link found under cursor.")
     end
