@@ -91,6 +91,9 @@ vkeymap('<leader>p', '"0p')
 -- Remove Ansi color escape code
 nkeymap('<leader>rc', ':%s/\\e\\[[0-9;]*m//g<cr>')
 
+-- Make first char in current line capital
+nkeymap('<leader>u', ':s/\\([a-z]\\)/\\u\\1/<cr>')
+
 -- Go to definition in vertical split
 nkeymap('gsd', ':only<bar>vsplit<CR>gd')
 
