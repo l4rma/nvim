@@ -14,6 +14,7 @@ return {
 		}
 		lspconfig.rust_analyzer.setup{}
 		lspconfig.hls.setup{}
+		lspconfig.gopls.setup{}
 		lspconfig.terraformls.setup{}
 		lspconfig.html.setup{}
 	end
