@@ -10,3 +10,6 @@
 --vim.cmd("let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/','syntax': 'markdown', 'ext': '.md'}]")
 require('config')
 require('plugins')
+function _G.CustomFoldText()
+    return vim.fn.getline(vim.v.foldstart) .. ' ... ' .. vim.fn.getline(vim.v.foldend):gsub("^%s*", "")
+end

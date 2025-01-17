@@ -94,6 +94,11 @@ nkeymap('<leader>rc', ':%s/\\e\\[[0-9;]*m//g<cr>')
 -- Make first char in current line capital
 nkeymap('<leader>u', ':s/\\([a-z]\\)/\\u\\1/<cr>')
 
+-- Get permissions from terraform error
+--[[
+	/performwwyiWGop
+]]--
+
 -- Go to definition in vertical split
 nkeymap('gsd', ':only<bar>vsplit<CR>gd')
 

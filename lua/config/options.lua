@@ -130,3 +130,9 @@ function OpenSelectedTextInSplit()
     -- Open the temp file in a new split
     vim.cmd('vsplit ' .. temp_file)
 end
+
+function _G.CustomFoldText()
+    return vim.fn.getline(vim.v.foldstart) .. ' ... ' .. vim.fn.getline(vim.v.foldend):gsub("^%s*", "")
+end
+
+vim.opt.foldtext = 'v:lua.CustomFoldText()'
