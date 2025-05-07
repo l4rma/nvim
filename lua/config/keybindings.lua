@@ -124,13 +124,15 @@ nkeymap('<leader>n', ':NvimTreeOpen<cr>')
 
 -- Git (vim-fugitive)
 nkeymap('<leader>gs', ':G<cr>')
+nkeymap('<leader>gg', ':G<cr>')
 nkeymap('<leader>gc', ':Git commit<cr>')
 nkeymap('<leader>gp', ':Git push<cr>')
+nkeymap('<leader>gd', ':Gdiffsplit<cr>')
 nkeymap('<leader>gh', ':diffget //2<cr>')
 nkeymap('<leader>gl', ':diffget //3<cr>')
 
 -- Telescope
-nkeymap('<leader>t', ':lua require("telescope.builtin").find_files()<cr>')
+nkeymap('<leader>t', ':lua require("telescope.builtin").find_files({ find_command = {"rg", "--files", "--hidden", "-g", "!.git" }})<cr>')
 nkeymap('<leader>fg', '<cmd>Telescope live_grep<cr>')
 nkeymap('<leader><tab>', '<cmd>Telescope buffers<cr>')
 nkeymap('<leader>fh', '<cmd>Telescope help_tags<cr>')
@@ -145,7 +147,7 @@ nkeymap('gw', ':lua vim.lsp.buf.workspace_symbol()<cr>')
 nkeymap('gr', ':lua vim.lsp.buf.references()<cr>')
 nkeymap('gt', ':lua vim.lsp.buf.type_definition()<cr>')
 nkeymap('K', ':lua vim.lsp.buf.hover()<cr>')
-nkeymap('<c-k>', ':lua vim.lsp.buf.signature_help()<cr>')
+nkeymap('<leader>k', ':lua vim.lsp.buf.signature_help()<cr>')
 nkeymap('<leader>af', ':lua vim.lsp.buf.code_action()<cr>')
 nkeymap('<a-cr>', ':lua vim.lsp.buf.code_action()<cr>')
 nkeymap('<leader>rn', ':lua vim.lsp.buf.rename()<cr>')
@@ -169,3 +171,10 @@ nkeymap('<leader>ff', ':TZFocus<cr>')
 
 -- Cellular automation
 nkeymap('<leader>fml', '<cmd>CellularAutomaton make_it_rain<CR>')
+
+nkeymap('<leader>sn', ']s')
+nkeymap('<leader>sp', '[s')
+nkeymap('<leader>sf', 'z=')
+nkeymap('<leader>sa', 'zg')
+nkeymap('<leader>sw', 'zw')
+
