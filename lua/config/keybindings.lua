@@ -36,6 +36,9 @@ nkeymap('<leader>b1', ':lua vim.api.nvim_set_hl(1, "Normal", {guibg=NONE, ctermb
 -- Yank line
 nkeymap('Y', 'yy')
 
+-- Enter normal mode
+keymap('i', 'jk', '<ESC>', opts)
+
 -- Delete word on macOs
 vim.api.nvim_set_keymap('i', '<M-bs>', '<c-w>', opts)
 
