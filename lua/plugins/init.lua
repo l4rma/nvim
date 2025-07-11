@@ -21,9 +21,10 @@ return {
     'diepm/vim-rest-console',           -- "Postman"
     'shortcuts/no-neck-pain.nvim',      -- Center buffer
     'tpope/vim-fugitive',               -- Git plugin
+    'dhruvasagar/vim-table-mode',       -- Create md Tables
 
     -- Git plugin (Magit clone for nvim)
-    { 'NeogitOrg/neogit', dependencies = 'nvim-lua/plenary.nvim' },
+    -- { 'NeogitOrg/neogit', dependencies = 'nvim-lua/plenary.nvim' },
 
     -- Github Copilot
     {'github/copilot.vim'},
@@ -42,7 +43,7 @@ return {
         end
     },
     -- Colorscheme
-    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+    -- { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 
     -- Alpha - Vim Dashboard
     {
@@ -89,13 +90,14 @@ return {
     {
         'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async'
     },
-    --require('ufo').setup()
-
-    --TODO: fix markdown preview
-    ({
+    -- Markdown Preview
+    {
         "iamcco/markdown-preview.nvim",
-        build = "cd app && npm install",
-        setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        build = "cd app && yarn install",
+        init = function()
+            vim.g.mkdp_filetypes = { "markdown" }
+        end,
         ft = { "markdown" },
-    }),
+    },
 }

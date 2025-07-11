@@ -71,6 +71,10 @@ vkeymap(']', 's[  ]hhp')
 vkeymap('}', 's{  }hhp')
 vkeymap('\'', 's\'\'hp')
 
+-- "_..._" as target
+nkeymap('ci_', 'T_ct_')
+nkeymap('vi_', 'T_vt_')
+
 -- shift+k in visual mode open man page for highlighted word
 -- Moving text lines in visual, insert and normal mode
 --keymap('v', 'J', ":m '>+1<CR>gv=gv", opts)
@@ -82,6 +86,7 @@ vkeymap('\'', 's\'\'hp')
 
 -- Copy highlighted text to Clipboard
 vkeymap('<leader>c', '"+y')
+nkeymap('<leader>cc', 'viW"+y')
 nkeymap('<leader>y', 'viw"+y')
 
 -- Copy filename to clipboard
@@ -175,6 +180,7 @@ nkeymap('<leader>ff', ':TZFocus<cr>')
 -- Cellular automation
 nkeymap('<leader>fml', '<cmd>CellularAutomaton make_it_rain<CR>')
 
+-- Spelling
 nkeymap('<leader>sn', ']s')
 nkeymap('<leader>sp', '[s')
 nkeymap('<leader>sf', 'z=')
