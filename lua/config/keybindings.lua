@@ -15,6 +15,9 @@ end
 local function nkeymap(key, map)
 	keymap('n', key, map, opts)
 end
+local function ikeymap(key, map)
+    keymap('i', key, map, opts)
+end
 
 -- Set leader key to space
 vim.g.mapleader = ' '
@@ -181,9 +184,15 @@ nkeymap('<leader>ff', ':TZFocus<cr>')
 nkeymap('<leader>fml', '<cmd>CellularAutomaton make_it_rain<CR>')
 
 -- Spelling
-nkeymap('<leader>sn', ']s')
-nkeymap('<leader>sp', '[s')
-nkeymap('<leader>sf', 'z=')
-nkeymap('<leader>sa', 'zg')
-nkeymap('<leader>sw', 'zw')
+nkeymap('<leader>sn', ']s') -- Next spelling mistake
+nkeymap('<leader>sp', '[s') -- Previous spelling mistake
+nkeymap('<leader>sf', 'z=') -- Fix spelling (List of suggestions)
+nkeymap('<leader>sa', 'zg') -- Add word to spelling list
+nkeymap('<leader>sw', 'zw') -- Add word as wrong in spelling list
+
+-- Copilot
+nkeymap('<leader>cd', ':Copilot disable<cr>') -- Disable Copilot
+nkeymap('<leader>ce', ':Copilot enable<cr>') -- Enable Copilot
+ikeymap('ccn', '<Plug>(copilot-next)') -- Next Copilot suggestion
+ikeymap('ccp', '<Plug>(copilot-previous)') -- Previous Copilot suggestion
 

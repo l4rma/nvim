@@ -137,3 +137,10 @@ function _G.CustomFoldText()
 end
 
 vim.opt.foldtext = 'v:lua.CustomFoldText()'
+
+vim.keymap.set('n', '<leader>aq', ':AmazonQ<CR>', { noremap = true, silent = true })
+vim.keymap.set('v', '<leader>aq', ':AmazonQ<CR>', { noremap = true, silent = true })
+vim.keymap.set('v', '<leader>aqe', ':AmazonQ explain<CR>', { noremap = true, silent = true })
+vim.keymap.set('v', '<leader>aqf', ':AmazonQ fix<CR>', { noremap = true, silent = true })
+vim.keymap.set('v', '<leader>aqo', ':AmazonQ optimize<CR>', { noremap = true, silent = true })
+vim.keymap.set('v', '<leader>aqr', ':AmazonQ refactor<CR>', { noremap = true, silent = true })

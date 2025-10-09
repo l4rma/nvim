@@ -79,7 +79,8 @@ return {
 				return out
 			end,
 			follow_url_func = function(url)
-				vim.fn.jobstart({"xdg-open", url})  -- linux
+				--vim.fn.jobstart({"xdg-open", url})  -- linux
+				vim.fn.jobstart({"open", url})  -- macOs
 			end,
 			follow_img_func = function(img)
 				vim.print("Hello world. Img: " .. img)
@@ -90,9 +91,9 @@ return {
 					-- NOTE: the 'char' value has to be a single character, and the highlight groups are defined below.
 					[" "] = { char = "🔳 ", hl_group = "ObsidianTodo" },
 					["x"] = { char = "✅ ", hl_group = "ObsidianDone" },
-					[">"] = { char = "  ", hl_group = "ObsidianRightArrow" },
-					["~"] = { char = "󰰱  ", hl_group = "ObsidianTilde" },
-					["!"] = { char = "⚠  ", hl_group = "ObsidianImportant" },
+					[">"] = { char = "➡️ ", hl_group = "ObsidianRightArrow" },
+					["~"] = { char = "🚫 ", hl_group = "ObsidianTilde" },
+					["!"] = { char = "⚠️ ", hl_group = "ObsidianImportant" },
 				},
 				bullets = { char = "• ", hl_group = "ObsidianBullet" },
 				external_link_icon = { char = " ", hl_group = "ObsidianExtLinkIcon" },
