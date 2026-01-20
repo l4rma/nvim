@@ -26,8 +26,8 @@ return {
     -- Git plugin (Magit clone for nvim)
     -- { 'NeogitOrg/neogit', dependencies = 'nvim-lua/plenary.nvim' },
 
-    -- Github Copilot
-    {'github/copilot.vim'},
+    -- -- Github Copilot
+    -- {'github/copilot.vim'},
 
     -- Flutter-tools
     {
