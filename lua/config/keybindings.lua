@@ -128,10 +128,10 @@ vkeymap('s', ':lua OpenSelectedTextInSplit()<CR>')
 -------------
 
 -- Nerdtree
--- nkeymap("<leader>n", ":NERDTreeToggle<cr>")
+ nkeymap('<leader>n', ':lua require("nvim-tree.api").tree.open({ focus = false, find_file = true, })<CR>')
 
 -- Tree
-nkeymap('<leader>n', ':NvimTreeOpen<cr>')
+--nkeymap('<leader>n', ':NvimTreeOpen<cr>')
 
 -- Git (vim-fugitive)
 nkeymap('<leader>gs', ':G<cr>')
@@ -141,27 +141,31 @@ nkeymap('<leader>gp', ':Git push<cr>')
 nkeymap('<leader>gd', ':Gdiffsplit<cr>')
 nkeymap('<leader>gh', ':diffget //2<cr>')
 nkeymap('<leader>gl', ':diffget //3<cr>')
+nkeymap('<leader>gb', ':Git blame<cr>')
 
 -- Telescope
+vim.keymap.del('n', '<leader>tm', {})
+vim.keymap.del('n', '<leader>tt', {})
 nkeymap('<leader>t', ':lua require("telescope.builtin").find_files({ find_command = {"rg", "--files", "--hidden", "-g", "!.git" }})<cr>')
 nkeymap('<leader>fg', '<cmd>Telescope live_grep<cr>')
 nkeymap('<leader><tab>', '<cmd>Telescope buffers<cr>')
 nkeymap('<leader>fh', '<cmd>Telescope help_tags<cr>')
 nkeymap('<leader>fm', '<cmd>Telescope man_pages<cr>')
-
 -- LSP
 nkeymap('gd', ':lua vim.lsp.buf.definition()<cr>')
 nkeymap('gD', ':lua vim.lsp.buf.declaration()<cr>')
 nkeymap('gi', ':lua vim.lsp.buf.implementation()<cr>')
 nkeymap('gw', ':lua vim.lsp.buf.document_symbol()<cr>')
-nkeymap('gw', ':lua vim.lsp.buf.workspace_symbol()<cr>')
+nkeymap('gW', ':lua vim.lsp.buf.workspace_symbol()<cr>')
 nkeymap('gr', ':lua vim.lsp.buf.references()<cr>')
+nkeymap('gR', ':lua vim.lsp.buf.rename()<cr>')
 nkeymap('gt', ':lua vim.lsp.buf.type_definition()<cr>')
-nkeymap('K', ':lua vim.lsp.buf.hover()<cr>')
-nkeymap('<leader>k', ':lua vim.lsp.buf.signature_help()<cr>')
-nkeymap('<leader>af', ':lua vim.lsp.buf.code_action()<cr>')
+nkeymap('ge', ':lua vim.diagnostic.open_float()<cr>')
+nkeymap('K', ':lua vim.lsp.buf.signature_help()<cr>')
+nkeymap('<leader>k', ':lua vim.lsp.buf.hover()<cr>')
+--nkeymap('K', ':lua vim.lsp.buf.signature_help()<cr>')
 nkeymap('<a-cr>', ':lua vim.lsp.buf.code_action()<cr>')
-nkeymap('<leader>rn', ':lua vim.lsp.buf.rename()<cr>')
+
 
 -- Obsidian.nvim
 nkeymap('<leader>oo', ':ObsidianQuickSwitch<cr>')
