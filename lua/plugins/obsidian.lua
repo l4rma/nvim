@@ -16,12 +16,20 @@ return {
 				  path = "~/Dropbox/vault/personal",
 				},
 				{
+				  name = "today-i-learned",
+				  path = "~/Dropbox/vault/today-i-learned",
+				},
+				{
 				  name = "work",
 				  path = "~/Dropbox/vault/work",
 				},
 				{
 				  name = "soprasteria",
 				  path = "~/Dropbox/vault/work/soprasteria",
+				},
+				{
+				  name = "sb1u",
+				  path = "~/Dropbox/vault/work/sb1u",
 				},
 			},
 			completion = {
@@ -66,9 +74,9 @@ return {
 				if note.title then
 				  note:add_alias(note.title)
 				end
-				note.date = os.date("%d-%m-%y %A")
-				note.sources = {}
-				local out = { id = note.id, date = note.date, tags = note.tags, sources = note.sources }
+				note.date = os.date("%d.%m.%y %A")
+				-- note.sources = {}
+				local out = { id = note.id, date = note.date, tags = note.tags }
 				-- `note.metadata` contains any manually added fields in the frontmatter.
 				-- So here we just make sure those fields are kept in the frontmatter.
 				if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
@@ -79,8 +87,8 @@ return {
 				return out
 			end,
 			follow_url_func = function(url)
-				--vim.fn.jobstart({"xdg-open", url})  -- linux
-				vim.fn.jobstart({"open", url})  -- macOs
+				vim.fn.jobstart({"xdg-open", url})  -- linux
+				--vim.fn.jobstart({"open", url})  -- macOs
 			end,
 			follow_img_func = function(img)
 				vim.print("Hello world. Img: " .. img)
@@ -89,11 +97,11 @@ return {
 			ui = {
 				checkboxes = {
 					-- NOTE: the 'char' value has to be a single character, and the highlight groups are defined below.
-					[" "] = { char = "🔳 ", hl_group = "ObsidianTodo" },
-					["x"] = { char = "✅ ", hl_group = "ObsidianDone" },
-					[">"] = { char = "➡️ ", hl_group = "ObsidianRightArrow" },
-					["~"] = { char = "🚫 ", hl_group = "ObsidianTilde" },
-					["!"] = { char = "⚠️ ", hl_group = "ObsidianImportant" },
+					-- [" "] = { char = "🔳 ", hl_group = "ObsidianTodo" },
+					-- ["x"] = { char = "✅ ", hl_group = "ObsidianDone" },
+					-- [">"] = { char = "➡️ ", hl_group = "ObsidianRightArrow" },
+					-- ["~"] = { char = "🚫 ", hl_group = "ObsidianTilde" },
+					-- ["!"] = { char = "⚠️ ", hl_group = "ObsidianImportant" },
 				},
 				bullets = { char = "• ", hl_group = "ObsidianBullet" },
 				external_link_icon = { char = " ", hl_group = "ObsidianExtLinkIcon" },

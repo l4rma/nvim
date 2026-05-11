@@ -93,7 +93,7 @@ nkeymap('<leader>cc', 'viW"+y')
 nkeymap('<leader>y', 'viw"+y')
 
 -- Copy filename to clipboard
-nkeymap('<leader>cf', ':let @+ = expand("%")<cr>')
+nkeymap('<leader>cf', ':let @+ = expand("%:p")<cr>')
 
 -- Paste last yanked
 nkeymap('<leader>p', '"0p')
@@ -172,9 +172,13 @@ nkeymap('<leader>oo', ':ObsidianQuickSwitch<cr>')
 nkeymap('<leader>os', ':ObsidianSearch<cr>')
 nkeymap('<leader>on', ':ObsidianNew<cr>')
 nkeymap('<leader>ot', ':ObsidianTags<cr>')
-nkeymap('<leader>oc', ':ObsidianTemplate<cr>')
+--nkeymap('<leader>oc', ':ObsidianTemplate<cr>')
 nkeymap('<leader>oi', ':ObsidianTOC<cr>') -- index / table of content
 nkeymap('<leader>ob', ':ObsidianBacklinks<cr>') -- index / table of content
+vim.keymap.set("n", "<leader>oc", function()
+    vim.bo.modifiable = true
+    vim.cmd("ObsidianTemplate")
+end, { desc = "Apply Template (Force Unlock)" })
 
 -- VimWiki
 -- TODO: Add shortcuts for: insert table

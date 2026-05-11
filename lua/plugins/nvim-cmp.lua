@@ -24,7 +24,7 @@ return {
 			-- completion settings
 			completion = {
 				--completeopt = 'menu,menuone,noselect'
-				keyword_length = 2
+				keyword_length = 5
 			},
 
 			-- key mapping
@@ -66,7 +66,7 @@ return {
 				{ name = 'nvim_lsp' },
 				{ name = 'luasnip' },
 				{ name = 'lua-snippets' },
-				{ name = 'path' },
+				{ name = 'path', max_item_count = 10 },
 				{ name = 'buffer' },
 			},
 		}
