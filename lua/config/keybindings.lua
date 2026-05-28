@@ -9,14 +9,13 @@
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true }
 local function vkeymap(key, map)
-	keymap('v', key, map, opts)
+    keymap('v', key, map, opts)
 end
-
 local function nkeymap(key, map)
 	keymap('n', key, map, opts)
 end
-local function ikeymap(key, map)
-    keymap('i', key, map, opts)
+local function ikeymap(key, map, extra_opts)
+    keymap('i', key, map, vim.tbl_extend('force', opts, extra_opts or {}))
 end
 
 -- Set leader key to space
@@ -200,8 +199,9 @@ nkeymap('<leader>sa', 'zg') -- Add word to spelling list
 nkeymap('<leader>sw', 'zw') -- Add word as wrong in spelling list
 
 -- Copilot
--- nkeymap('<leader>cd', ':Copilot disable<cr>') -- Disable Copilot
--- nkeymap('<leader>ce', ':Copilot enable<cr>') -- Enable Copilot
--- ikeymap('ccn', '<Plug>(copilot-next)') -- Next Copilot suggestion
--- ikeymap('ccp', '<Plug>(copilot-previous)') -- Previous Copilot suggestion
+nkeymap('<leader>cd', ':Copilot disable<cr>') -- Disable Copilot
+nkeymap('<leader>ce', ':Copilot enable<cr>') -- Enable Copilot
+ikeymap('<C-y>', 'copilot#Accept("")', { expr = true, replace_keycodes = false }) -- Accept suggestion
+ikeymap('ccn', '<Plug>(copilot-next)') -- Next Copilot suggestion
+ikeymap('ccp', '<Plug>(copilot-previous)') -- Previous Copilot suggestion
 

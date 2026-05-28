@@ -34,6 +34,9 @@ set.conceallevel = 1
 -- Set GUI Cursor: Block. Blinking in insert-mode. Underline in replace-mode and while operation pending
 set.gcr = "n-v-c-sm-i-ci-ve:block,r-cr-o:hor20,i:blinkwait0-blinkoff400-blinkon250-Cursor/lCursor" 
 
+-- Dont accept copilot with tab
+vim.g.copilot_no_tab_map = true
+
 -- Folding code
 set.foldmethod = "expr"
 set.foldexpr = "nvim_treesitter#foldexpr()"

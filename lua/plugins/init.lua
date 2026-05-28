@@ -17,7 +17,6 @@ return {
     'Pocco81/true-zen.nvim',                -- Distraction free mode 
     'eandrju/cellular-automaton.nvim',  -- Funz
     'tpope/vim-repeat',                 -- Enable better '.' use
-    'sindrets/diffview.nvim',           -- Diff view and Merge tool
     'diepm/vim-rest-console',           -- "Postman"
     'shortcuts/no-neck-pain.nvim',      -- Center buffer
     'tpope/vim-fugitive',               -- Git plugin
@@ -26,8 +25,8 @@ return {
     -- Git plugin (Magit clone for nvim)
     -- { 'NeogitOrg/neogit', dependencies = 'nvim-lua/plenary.nvim' },
 
-    -- -- Github Copilot
-    -- {'github/copilot.vim'},
+    -- Github Copilot
+    {'github/copilot.vim'},
 
     -- Flutter-tools
     {
