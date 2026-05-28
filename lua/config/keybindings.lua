@@ -41,6 +41,7 @@ nkeymap('Y', 'yy')
 
 -- Enter normal mode
 keymap('i', 'jk', '<ESC>', opts)
+keymap('i', 'jj', '<ESC>', opts)
 
 -- Delete word on macOs
 vim.api.nvim_set_keymap('i', '<M-bs>', '<c-w>', opts)
@@ -199,8 +200,8 @@ nkeymap('<leader>sa', 'zg') -- Add word to spelling list
 nkeymap('<leader>sw', 'zw') -- Add word as wrong in spelling list
 
 -- Copilot
-nkeymap('<leader>cd', ':Copilot disable<cr>') -- Disable Copilot
-nkeymap('<leader>ce', ':Copilot enable<cr>') -- Enable Copilot
-ikeymap('ccn', '<Plug>(copilot-next)') -- Next Copilot suggestion
-ikeymap('ccp', '<Plug>(copilot-previous)') -- Previous Copilot suggestion
+-- nkeymap('<leader>cd', ':Copilot disable<cr>') -- Disable Copilot
+-- nkeymap('<leader>ce', ':Copilot enable<cr>') -- Enable Copilot
+-- ikeymap('ccn', '<Plug>(copilot-next)') -- Next Copilot suggestion
+-- ikeymap('ccp', '<Plug>(copilot-previous)') -- Previous Copilot suggestion
 
