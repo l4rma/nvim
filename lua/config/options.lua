@@ -4,6 +4,7 @@ local set = vim.opt
 set.sw = 4                                        -- Shift width: tab size
 set.ts = 4                                        -- Tab Stop: tab size
 set.sts = 4                                       -- Soft Tab Stop: tab size
+set.et = true                                     -- Expand Tabs: Use spaces instead of tabs
 set.ma = true                                     -- Modifiable: modifiable buffers
 set.nu = true                                     -- Line numbers
 set.rnu = true                                    -- Relative line numbers
@@ -13,7 +14,7 @@ set.undodir = vim.fn.stdpath('config') .. '/undo' -- Store undofile in .config/n
 set.udf = true                                    -- Undofile: Use the undofile
 set.is = true                                     -- Inc Search: Highlight pattern while searching
 set.so = 8                                        -- Scroll Off: Lines to end of screen when scolling
-set.siso = 12                                     -- Side Scroll Off 
+set.siso = 20                                     -- Side Scroll Off 
 set.sb = true                                     -- Split Below
 set.spr = true                                    -- Split Right
 set.ic = true                                     -- Ignore Case: when searching.
@@ -130,3 +131,16 @@ function OpenSelectedTextInSplit()
     -- Open the temp file in a new split
     vim.cmd('vsplit ' .. temp_file)
 end
+
+function _G.CustomFoldText()
+    return vim.fn.getline(vim.v.foldstart) .. ' ... ' .. vim.fn.getline(vim.v.foldend):gsub("^%s*", "")
+end
+
+vim.opt.foldtext = 'v:lua.CustomFoldText()'
+
+vim.keymap.set('n', '<leader>aq', ':AmazonQ<CR>', { noremap = true, silent = true })
+vim.keymap.set('v', '<leader>aq', ':AmazonQ<CR>', { noremap = true, silent = true })
+vim.keymap.set('v', '<leader>aqe', ':AmazonQ explain<CR>', { noremap = true, silent = true })
+vim.keymap.set('v', '<leader>aqf', ':AmazonQ fix<CR>', { noremap = true, silent = true })
+vim.keymap.set('v', '<leader>aqo', ':AmazonQ optimize<CR>', { noremap = true, silent = true })
+vim.keymap.set('v', '<leader>aqr', ':AmazonQ refactor<CR>', { noremap = true, silent = true })

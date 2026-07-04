@@ -15,6 +15,9 @@ end
 local function nkeymap(key, map)
 	keymap('n', key, map, opts)
 end
+local function ikeymap(key, map)
+    keymap('i', key, map, opts)
+end
 
 -- Set leader key to space
 vim.g.mapleader = ' '
@@ -35,6 +38,9 @@ nkeymap('<leader>b1', ':lua vim.api.nvim_set_hl(1, "Normal", {guibg=NONE, ctermb
 
 -- Yank line
 nkeymap('Y', 'yy')
+
+-- Enter normal mode
+keymap('i', 'jk', '<ESC>', opts)
 
 -- Delete word on macOs
 vim.api.nvim_set_keymap('i', '<M-bs>', '<c-w>', opts)
@@ -68,6 +74,10 @@ vkeymap(']', 's[  ]hhp')
 vkeymap('}', 's{  }hhp')
 vkeymap('\'', 's\'\'hp')
 
+-- "_..._" as target
+nkeymap('ci_', 'T_ct_')
+nkeymap('vi_', 'T_vt_')
+
 -- shift+k in visual mode open man page for highlighted word
 -- Moving text lines in visual, insert and normal mode
 --keymap('v', 'J', ":m '>+1<CR>gv=gv", opts)
@@ -79,6 +89,7 @@ vkeymap('\'', 's\'\'hp')
 
 -- Copy highlighted text to Clipboard
 vkeymap('<leader>c', '"+y')
+nkeymap('<leader>cc', 'viW"+y')
 nkeymap('<leader>y', 'viw"+y')
 
 -- Copy filename to clipboard
@@ -93,6 +104,11 @@ nkeymap('<leader>rc', ':%s/\\e\\[[0-9;]*m//g<cr>')
 
 -- Make first char in current line capital
 nkeymap('<leader>u', ':s/\\([a-z]\\)/\\u\\1/<cr>')
+
+-- Get permissions from terraform error
+--[[
+	/performwwyiWGop
+]]--
 
 -- Go to definition in vertical split
 nkeymap('gsd', ':only<bar>vsplit<CR>gd')
@@ -119,13 +135,15 @@ nkeymap('<leader>n', ':NvimTreeOpen<cr>')
 
 -- Git (vim-fugitive)
 nkeymap('<leader>gs', ':G<cr>')
+nkeymap('<leader>gg', ':G<cr>')
 nkeymap('<leader>gc', ':Git commit<cr>')
 nkeymap('<leader>gp', ':Git push<cr>')
+nkeymap('<leader>gd', ':Gdiffsplit<cr>')
 nkeymap('<leader>gh', ':diffget //2<cr>')
 nkeymap('<leader>gl', ':diffget //3<cr>')
 
 -- Telescope
-nkeymap('<leader>t', ':lua require("telescope.builtin").find_files()<cr>')
+nkeymap('<leader>t', ':lua require("telescope.builtin").find_files({ find_command = {"rg", "--files", "--hidden", "-g", "!.git" }})<cr>')
 nkeymap('<leader>fg', '<cmd>Telescope live_grep<cr>')
 nkeymap('<leader><tab>', '<cmd>Telescope buffers<cr>')
 nkeymap('<leader>fh', '<cmd>Telescope help_tags<cr>')
@@ -140,7 +158,7 @@ nkeymap('gw', ':lua vim.lsp.buf.workspace_symbol()<cr>')
 nkeymap('gr', ':lua vim.lsp.buf.references()<cr>')
 nkeymap('gt', ':lua vim.lsp.buf.type_definition()<cr>')
 nkeymap('K', ':lua vim.lsp.buf.hover()<cr>')
-nkeymap('<c-k>', ':lua vim.lsp.buf.signature_help()<cr>')
+nkeymap('<leader>k', ':lua vim.lsp.buf.signature_help()<cr>')
 nkeymap('<leader>af', ':lua vim.lsp.buf.code_action()<cr>')
 nkeymap('<a-cr>', ':lua vim.lsp.buf.code_action()<cr>')
 nkeymap('<leader>rn', ':lua vim.lsp.buf.rename()<cr>')
@@ -164,3 +182,17 @@ nkeymap('<leader>ff', ':TZFocus<cr>')
 
 -- Cellular automation
 nkeymap('<leader>fml', '<cmd>CellularAutomaton make_it_rain<CR>')
+
+-- Spelling
+nkeymap('<leader>sn', ']s') -- Next spelling mistake
+nkeymap('<leader>sp', '[s') -- Previous spelling mistake
+nkeymap('<leader>sf', 'z=') -- Fix spelling (List of suggestions)
+nkeymap('<leader>sa', 'zg') -- Add word to spelling list
+nkeymap('<leader>sw', 'zw') -- Add word as wrong in spelling list
+
+-- Copilot
+nkeymap('<leader>cd', ':Copilot disable<cr>') -- Disable Copilot
+nkeymap('<leader>ce', ':Copilot enable<cr>') -- Enable Copilot
+ikeymap('ccn', '<Plug>(copilot-next)') -- Next Copilot suggestion
+ikeymap('ccp', '<Plug>(copilot-previous)') -- Previous Copilot suggestion
+
