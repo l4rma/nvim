@@ -17,5 +17,19 @@ return {
 		lspconfig.gopls.setup{}
 		lspconfig.terraformls.setup{}
 		lspconfig.html.setup{}
+		lspconfig.eslint.setup{
+			filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+			root_dir = lspconfig.util.root_pattern('.git', vim.fn.getcwd()),
+			init_options = {
+				linters = {},
+				loadPlugins = false,
+				extensions = {},
+				-- Automatically fix problems
+				fix = true,
+				format = true,
+			},
+		}
+		lspconfig.tsserver.setup{}
+		lspconfig.tailwindcss.setup{}
 	end
 }

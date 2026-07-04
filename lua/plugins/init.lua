@@ -20,6 +20,7 @@ return {
 	'sindrets/diffview.nvim',			-- Diff view and Merge tool
 	'diepm/vim-rest-console',			-- "Postman"
 	'shortcuts/no-neck-pain.nvim',		-- Center buffer
+	'github/copilot.vim',				-- Copilot
 
 	-- Git plugin (Magit clone for nvim)
 	{ 'NeogitOrg/neogit', dependencies = 'nvim-lua/plenary.nvim' },
@@ -28,6 +29,13 @@ return {
 	{
 		'akinsho/flutter-tools.nvim',
 		dependencies = 'nvim-lua/plenary.nvim'
+	},
+	{
+		"windwp/nvim-ts-autotag",
+		ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+		config = function()
+			require('nvim-ts-autotag').setup()
+		end,
 	},
 
 	-- Autopair
