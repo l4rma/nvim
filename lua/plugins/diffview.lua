@@ -11,7 +11,15 @@ return {
                 fold_open = "",
                 done = "✓"
             },
+            -- keymaps = {
+            --     file_panel = {
+            --         -- Custom: Open the file in a new split for editing
+            --         { "n", "<C-v>", require("diffview.actions").goto_file_split, { desc = "Open file in a vertical split" } },
+            --
+            --         -- Custom: Open the file in a new tab page for editing
+            --         { "n", "gf", require("diffview.actions").goto_file_tab, { desc = "Open file in a new tab" } },
+            --     },
+            -- },
         })
 	end
 }
-

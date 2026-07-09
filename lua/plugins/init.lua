@@ -3,7 +3,7 @@ return {
     'EdenEast/nightfox.nvim',           -- Colorscheme
     'sonph/onehalf',                    -- Colorscheme
     'joshdick/onedark.vim',             -- Colorscheme
-    'sainnhe/everforest',               -- Colorscheme
+    -- 'sainnhe/everforest' removed; using neanias/everforest-nvim (see everforest.lua)
     'sainnhe/sonokai',                  -- Colorscheme
     'phanviet/vim-monokai-pro',         -- Colorscheme
     'sheerun/vim-polyglot',             -- Colorscheme
@@ -31,7 +31,8 @@ return {
     -- Flutter-tools
     {
         'akinsho/flutter-tools.nvim',
-        dependencies = 'nvim-lua/plenary.nvim'
+        dependencies = 'nvim-lua/plenary.nvim',
+        ft = { 'dart' },
     },
 
     -- Autopair
@@ -41,35 +42,7 @@ return {
             require('nvim-autopairs').setup()
         end
     },
-    -- Colorscheme
-    -- { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-
-    -- Alpha - Vim Dashboard
-    {
-        'goolord/alpha-nvim',
-        dependencies = { 'nvim-tree/nvim-web-devicons' },
-        config = function ()
-            require'alpha'.setup(require'alpha.themes.startify'.config)
-            local startify = require("alpha.themes.startify")
-            startify.section.mru_cwd.val = { { type = "padding", val = 0 } }
-            startify.section.top_buttons.val = {
-                startify.button("e", " New file", ":ene <bar> startinsert <cr>"),
-            }
-            startify.section.bottom_buttons.val = {
-                startify.button("v", " Neovim config", ":e ~/.config/nvim/init.lua<cr>"),
-                startify.button("q", " Quit neovim", ":qa<cr>"),
-            }
-        end
-    },
-    -- LSP
-    {
-    },
-
     { "mfussenegger/nvim-jdtls", ft = { "java" }},
-
-    -- Autocomplete
-    {
-    },
 
     -- Telescope
     {

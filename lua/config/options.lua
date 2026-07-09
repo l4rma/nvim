@@ -27,9 +27,13 @@ set.swf = false                                   -- Swap File: Don't use swap f
 set.bk = false                                    -- Backup: Don't make backup files.
 set.tgc = true                                    -- Term Gui Colors: Enable 24-bit RGB color
 set.wmnu = true                                   -- Wild Menu: Tab auto complete in command line.
-set.list = true
+set.list = true                                   -- 
+set.autoread = true                               -- Auto Read: Auto reload file if changed outside of nvim
 --set.listchars = {eol = '↵', space = '·', trail = '·', tab = '⋮·'}
 set.conceallevel = 1
+set.signcolumn = "yes"                            -- Reserve space for LSP signs (prevents layout shift)
+set.timeoutlen = 300                              -- ms to wait for mapped key sequence
+set.completeopt = "menu,menuone,noselect"         -- Required for nvim-cmp
 
 -- Set GUI Cursor: Block. Blinking in insert-mode. Underline in replace-mode and while operation pending
 set.gcr = "n-v-c-sm-i-ci-ve:block,r-cr-o:hor20,i:blinkwait0-blinkoff400-blinkon250-Cursor/lCursor" 
@@ -41,28 +45,36 @@ vim.g.copilot_no_tab_map = true
 set.foldmethod = "expr"
 set.foldexpr = "nvim_treesitter#foldexpr()"
 set.foldenable = false
+set.foldtext = 'v:lua.CustomFoldText()'           -- Custom fold text to show first and last line of folded code
 
--- Colorscheme
-vim.cmd("colorscheme everforest")
-set.background = "dark" --'light' or 'dark'
+-- Colorscheme is set in lua/plugins/everforest.lua
+set.background = "dark"
 vim.api.nvim_set_hl(1, "Normal", {guibg=NONE, ctermbg=NONE})
---vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
---vim.cmd("hi NormalNC guibg=NONE ctermbg=NONE")
--- Telescope flutter extention
---require("telescope").load_extension("flutter")
+
+-- NVIM YAML VIEW
+-- Depends on `alias yaml="NVIM_YAML_VIEW=1 nvim"` in .bashrc
+require("utils.yaml-view").yaml_view()
 
 -- Presentation Mode
 -- Auto when opening .vpm files
 -- Keybinds: n: next slide, N: prev slide, f: Ataraxis
 vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+  group = vim.api.nvim_create_augroup('vpm_keybindings', { clear = true }),
   pattern = {"*.vpm"},
-  callback = function() 
+  callback = function()
     set.colorcolumn = ""
     vim.api.nvim_set_keymap('n', 'n', ':n<CR>', { noremap = true })
     vim.api.nvim_set_keymap('n', 'N', ':N<CR>', { noremap = true })
     vim.api.nvim_set_keymap('n', 'f', ':TZAtaraxis<cr>', { noremap = true })
   end
 })
+
+-- Auto reload file on focus
+vim.api.nvim_create_autocmd({"FocusGained", "BufEnter"}, {
+  group = vim.api.nvim_create_augroup('auto_reload', { clear = true }),
+  command = "checktime"
+})
+
 
 -- Highlight yanked text
 vim.cmd("au TextYankPost * silent! lua vim.highlight.on_yank {higroup=\"IncSearch\", timeout=150}")
@@ -92,18 +104,12 @@ function psv_resize_columns()
 end
 vim.api.nvim_create_user_command('FixPsv', psv_resize_columns, {})
 
--- Leader+enter toggles checkbox in markdown files
+-- Leader+enter toggles checkbox, gi opens img link — markdown only
 vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
-  pattern = {"*.md"},
-  callback = function() 
-    vim.api.nvim_set_keymap('n', '<leader><CR>', ':lua require("utils.toggle-checkbox").toggle()<CR>', { noremap = true })
-  end
-})
-
--- gi opens img link in qview
-vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+  group = vim.api.nvim_create_augroup('markdown_keybindings', { clear = true }),
   pattern = {"*.md"},
   callback = function()
+    vim.api.nvim_set_keymap('n', '<leader><CR>', ':lua require("utils.toggle-checkbox").toggle()<CR>', { noremap = true })
     vim.api.nvim_set_keymap('n', 'gi', ':lua require("utils.open-img").open()<CR>', { noremap = true })
   end
 })
@@ -138,12 +144,3 @@ end
 function _G.CustomFoldText()
     return vim.fn.getline(vim.v.foldstart) .. ' ... ' .. vim.fn.getline(vim.v.foldend):gsub("^%s*", "")
 end
-
-vim.opt.foldtext = 'v:lua.CustomFoldText()'
-
-vim.keymap.set('n', '<leader>aq', ':AmazonQ<CR>', { noremap = true, silent = true })
-vim.keymap.set('v', '<leader>aq', ':AmazonQ<CR>', { noremap = true, silent = true })
-vim.keymap.set('v', '<leader>aqe', ':AmazonQ explain<CR>', { noremap = true, silent = true })
-vim.keymap.set('v', '<leader>aqf', ':AmazonQ fix<CR>', { noremap = true, silent = true })
-vim.keymap.set('v', '<leader>aqo', ':AmazonQ optimize<CR>', { noremap = true, silent = true })
-vim.keymap.set('v', '<leader>aqr', ':AmazonQ refactor<CR>', { noremap = true, silent = true })

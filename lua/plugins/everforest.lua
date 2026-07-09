@@ -1,8 +1,10 @@
 return {
   "neanias/everforest-nvim",
+  priority = 1000,
   config = function()
     require("everforest").setup({
-      -- Your config here
+      background = "hard",
     })
+    vim.cmd("colorscheme everforest")
   end,
 }

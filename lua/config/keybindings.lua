@@ -22,18 +22,18 @@ end
 vim.g.mapleader = ' '
 
 -- Save, Quit, Source, Alpha
-nkeymap('<leader>w', ':w<CR>')
+nkeymap('<leader>w', ':wa<CR>')
 nkeymap('<leader>q', ':q<CR>')
-nkeymap('<leader>wq', ':wq<CR>')
-nkeymap('<leader>s', ':so %<CR>')
+nkeymap('<leader>wq', ':wa<CR>:q<CR>')
+--nkeymap('<leader>s', ':so %<CR>')
 nkeymap('<c-n>', ':Alpha<cr>')
 
 -- Highlight all
 nkeymap('<leader>v', 'ggVG')
 
 -- Toggle transparent background
-nkeymap('<leader>b0', ':lua vim.api.nvim_set_hl(0, "Normal", {guibg=NONE, ctermbg=NONE})<CR>')
-nkeymap('<leader>b1', ':lua vim.api.nvim_set_hl(1, "Normal", {guibg=NONE, ctermbg=NONE})<CR>')
+nkeymap('<leader>b0', ':lua vim.api.nvim_set_hl(0, "Normal", {})<CR>')
+nkeymap('<leader>b1', ':lua vim.api.nvim_set_hl(0, "Normal", { bg = "none" })<CR>')
 
 -- Yank line
 nkeymap('Y', 'yy')
@@ -78,15 +78,6 @@ vkeymap('\'', 's\'\'hp')
 nkeymap('ci_', 'T_ct_')
 nkeymap('vi_', 'T_vt_')
 
--- shift+k in visual mode open man page for highlighted word
--- Moving text lines in visual, insert and normal mode
---keymap('v', 'J', ":m '>+1<CR>gv=gv", opts)
---keymap('v', 'K', ":m '<-2<CR>gv=gv", opts)
---keymap('i', '<C-j>', "<esc>:m .+1<CR>==", opts)
---keymap('i', '<C-k>', "<esc>:m .-2<CR>==", opts)
---keymap('n', '<leader>j', ":m .+1<CR>==", opts)
---keymap('n', '<leader>k', ":m .-2<CR>==", opts)
-
 -- Copy highlighted text to Clipboard
 vkeymap('<leader>c', '"+y')
 nkeymap('<leader>cc', 'viW"+y')
@@ -105,17 +96,12 @@ nkeymap('<leader>rc', ':%s/\\e\\[[0-9;]*m//g<cr>')
 -- Make first char in current line capital
 nkeymap('<leader>u', ':s/\\([a-z]\\)/\\u\\1/<cr>')
 
--- Get permissions from terraform error
---[[
-	/performwwyiWGop
-]]--
 
 -- Go to definition in vertical split
 nkeymap('gsd', ':only<bar>vsplit<CR>gd')
 
 -- Resize columns in pipe seperated value files
 nkeymap('<leader>å', ':%s/||/| |/g<CR>:%s/||/| |/g<CR>:%! column -t -s "|"<CR>')
---nkeymap('<leader>å', ':FixPsv<CR>')
 
 -- Format JSON file
 nkeymap('<leader>fj', ':JSON<CR>') -- Ref: ./options.lua
@@ -128,10 +114,22 @@ vkeymap('s', ':lua OpenSelectedTextInSplit()<CR>')
 -------------
 
 -- Nerdtree
- nkeymap('<leader>n', ':lua require("nvim-tree.api").tree.open({ focus = false, find_file = true, })<CR>')
+nkeymap('<leader>n', ':lua require("nvim-tree.api").tree.open({ focus = false, find_file = true, })<CR>')
+vim.keymap.set('n', 'gf', function()
+    local cfile = vim.fn.expand('<cfile>')
+    local file_dir = vim.fn.expand('%:p:h')
+    local path = vim.fn.fnamemodify(file_dir .. '/' .. cfile, ':p')
+    if vim.fn.isdirectory(path) == 1 then
+        require('nvim-tree.api').tree.open({ path = path, focus = true })
+        vim.cmd('only')
+    else
+        vim.cmd('normal! gf')
+    end
+end, { noremap = true, silent = true })
 
--- Tree
---nkeymap('<leader>n', ':NvimTreeOpen<cr>')
+
+local projects = require("utils.open-project")
+vim.keymap.set("n", "<leader>fp", projects.open_project, { desc = "Open project" })
 
 -- Git (vim-fugitive)
 nkeymap('<leader>gs', ':G<cr>')
@@ -143,28 +141,24 @@ nkeymap('<leader>gh', ':diffget //2<cr>')
 nkeymap('<leader>gl', ':diffget //3<cr>')
 nkeymap('<leader>gb', ':Git blame<cr>')
 
+-- Diffview
+nkeymap('<leader>do', ':DiffviewOpen<cr>')
+nkeymap('<leader>dh', ':DiffviewOpen HEAD<cr>')
+nkeymap('<leader>dc', ':DiffviewClose<cr>')
+nkeymap('<leader>dl', ':DiffviewFileHistory<cr>')
+nkeymap('<leader>df', ':DiffviewFileHistory %<cr>')
+nkeymap('<leader>dt', ':DiffviewToggleFiles<cr>')
+
 -- Telescope
-vim.keymap.del('n', '<leader>tm', {})
-vim.keymap.del('n', '<leader>tt', {})
+pcall(vim.keymap.del, 'n', '<leader>tm')
+pcall(vim.keymap.del, 'n', '<leader>tt')
 nkeymap('<leader>t', ':lua require("telescope.builtin").find_files({ find_command = {"rg", "--files", "--hidden", "-g", "!.git" }})<cr>')
 nkeymap('<leader>fg', '<cmd>Telescope live_grep<cr>')
 nkeymap('<leader><tab>', '<cmd>Telescope buffers<cr>')
 nkeymap('<leader>fh', '<cmd>Telescope help_tags<cr>')
 nkeymap('<leader>fm', '<cmd>Telescope man_pages<cr>')
--- LSP
-nkeymap('gd', ':lua vim.lsp.buf.definition()<cr>')
-nkeymap('gD', ':lua vim.lsp.buf.declaration()<cr>')
-nkeymap('gi', ':lua vim.lsp.buf.implementation()<cr>')
-nkeymap('gw', ':lua vim.lsp.buf.document_symbol()<cr>')
-nkeymap('gW', ':lua vim.lsp.buf.workspace_symbol()<cr>')
-nkeymap('gr', ':lua vim.lsp.buf.references()<cr>')
-nkeymap('gR', ':lua vim.lsp.buf.rename()<cr>')
-nkeymap('gt', ':lua vim.lsp.buf.type_definition()<cr>')
-nkeymap('ge', ':lua vim.diagnostic.open_float()<cr>')
-nkeymap('K', ':lua vim.lsp.buf.signature_help()<cr>')
-nkeymap('<leader>k', ':lua vim.lsp.buf.hover()<cr>')
---nkeymap('K', ':lua vim.lsp.buf.signature_help()<cr>')
-nkeymap('<a-cr>', ':lua vim.lsp.buf.code_action()<cr>')
+nkeymap('<leader>fd', ':lua require("utils.diff-picker").diff_against_picked()<CR>')
+-- LSP keybindings are set in lua/plugins/lsp.lua via LspAttach
 
 
 -- Obsidian.nvim
@@ -172,7 +166,6 @@ nkeymap('<leader>oo', ':ObsidianQuickSwitch<cr>')
 nkeymap('<leader>os', ':ObsidianSearch<cr>')
 nkeymap('<leader>on', ':ObsidianNew<cr>')
 nkeymap('<leader>ot', ':ObsidianTags<cr>')
---nkeymap('<leader>oc', ':ObsidianTemplate<cr>')
 nkeymap('<leader>oi', ':ObsidianTOC<cr>') -- index / table of content
 nkeymap('<leader>ob', ':ObsidianBacklinks<cr>') -- index / table of content
 vim.keymap.set("n", "<leader>oc", function()

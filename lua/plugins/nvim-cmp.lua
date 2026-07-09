@@ -23,8 +23,8 @@ return {
 
 			-- completion settings
 			completion = {
-				--completeopt = 'menu,menuone,noselect'
-				keyword_length = 5
+				completeopt = 'menu,menuone,noselect',
+				keyword_length = 2,
 			},
 
 			-- key mapping
